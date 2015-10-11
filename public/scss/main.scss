@@ -1,6 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
+    min-height: 100hv;
 }
 
 ul {
@@ -9,3 +10,6 @@ ul {
     list-style: none;
 }
 
+.menu_submenu {
+    display: none;
+}
