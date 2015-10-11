@@ -1,11 +1,13 @@
-define(function () {
+define(["app.c"], function (MenuController) {
+    
+    class App {
 
-    class Menu {
-        constructor () {
-        
-        }        
+        constructor(conf) {
+            let controller = new MenuController(conf);
+            controller.loadView();
+        }
     }
 
+    return App;
 
-    return Menu;
 });

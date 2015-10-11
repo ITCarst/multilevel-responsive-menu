@@ -1,3 +1,5 @@
+"use strict";
+
 require.config({
     paths: {
         text: "../../node_modules/requirejs-plugins/lib/text",
@@ -8,11 +10,9 @@ require.config({
 
 require(["app"], function (App) {
 
-    let menuConf = {
+    var menuConf = {
         data: "data/menu.data.json"
-    }
+    };
 
-
-    let app = new App(menuConf);
-
-})
+    var app = new App(menuConf);
+});

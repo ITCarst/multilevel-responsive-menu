@@ -40,7 +40,8 @@
     "url": "https://github.com/IonutC/multilevel-responsive-menu/issues"
   },
   "homepage": "https://github.com/IonutC/multilevel-responsive-menu",
-  "dependencies": {    
+  "dependencies": {
+    "requirejs-plugins": "^1.0.2"
   },
   "keywords": [
     "multilevel-responsive-menu",

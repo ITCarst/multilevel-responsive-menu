@@ -1,0 +1,281 @@
+{
+    "general":{
+         "logo":"public/img/logo.png",
+         "name" : "Company Name"
+    },
+    "navigation" : [
+        {
+            "title" : "Shop",
+            "link"  : "#",
+            "subnav" : [
+                {
+                    "title": "Ladies",
+                    "link" : "#",
+                    "subnav" : [
+                        {
+                            "title": "Luxury Brands",
+                            "link" : "#"
+                        },
+                        {                        
+                            "title": "Clothing",
+                            "link" : "#",
+                            "subnav" : [
+                                {
+                                    "title" : "Clothing Categories",
+                                    "sub_column" : [
+                                        {
+                                            "title" : "Blazers",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Blouse and tunics",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Pants",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Jakets",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Dresses",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Skirts",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Sweaters",
+                                            "link" : "#" 
+                                        }, 
+                                        {
+                                            "title" : "T-shirts & tops",
+                                            "link" : "#" 
+                                        }, 
+                                        {
+                                            "title" : "Vests",
+                                            "link" : "#" 
+                                        }
+                                    ]
+                                }, 
+                                {
+                                    "title" : "Women's Brands", 
+                                    "sub_column": [
+                                        {
+                                            "title" : "7 For All Mankind",
+                                            "link" : "#"
+                                        }, 
+                                        {
+                                            "title" : "Aaiko",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Acne",
+                                            "link" : "#"
+                                        },
+
+                                        {
+                                            "title" : "Acne Studios",
+                                            "link" : "#"
+                                        },
+
+                                        {
+                                            "title" : "Adidads",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Alvere",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "American Vintage",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Amrapali",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Anecdote",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Aquanova",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Arcteryx",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Hackett",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Hanro",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Happy Socks",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "All Ladies Brands A-Z",
+                                            "link" : "#"
+                                        }
+                                    ]   
+                                }, 
+                                {
+                                    "title" : "Campaigns",
+                                    "sub_column" : [
+                                        {
+                                            "title" : "Relaxed chic style",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "All white",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Floral Print",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "The maxi skirt",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "The jumpsuit",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Relaxed chic style",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "All white",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Flower Prints",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "Hanro",
+                                            "link" : "#"
+                                        },
+                                        {
+                                            "title" : "The jumpsuit",
+                                            "link" : "#"
+                                        }
+                                    ]
+                                }, 
+                                {
+                                    "title" : "- Trend -",
+                                    "sub_column" : {
+                                        "title" :   "Retro",
+                                        "descr" : "Not the sweet colors we are used to, but just warm tones that we know so well from typical 70 prints.",
+                                        "button" : "View collection"
+                                    }
+                                }, 
+                                {
+                                    "title" : "Hipster",
+                                    "sub_column" : {
+                                        "title" :   "Retro",
+                                        "descr" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+                                        "button" : "View collection"                                    
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "title" : "Shoes",
+                            "link" : "#"
+                        }, 
+                        {
+                            "title": "Bags",
+                            "link" : "#"
+                        }, 
+                        {
+                            "title" : "Accesories",
+                            "link" : "#"
+                        }, 
+                        {
+                            "title" : "Lingerie & badmode",
+                            "link" : "#"
+                        }, 
+                        {
+                            "title" : "Cosmetics",
+                            "link" : "#"
+                        }, 
+                        {
+                            "title" : "Sale",
+                            "link" : "#"
+                        }
+                    ]
+                },
+                {
+                    "title": "Men",
+                    "link" : "#"
+                }, 
+                {
+                    "title": "Children",
+                    "link" : "#"
+                },
+                {
+                    "title" : "Lifestyle",
+                    "link" : "#"
+                },
+                {
+                    "title" : "search",
+                    "snippet" : "search_box_item" 
+                }
+            ]
+        }, 
+        {
+            "title" : "Inspiration & looks",
+            "link" : "#"
+        }, 
+        {
+            "title" : "Affiliates",
+            "link" : "#",
+            "subnav" : [
+                {
+                    "title" : "Sub Menu 3",
+                    "link" : "#"
+                }, 
+                {
+                    "title" : "Sub Menu 3",
+                    "link" : "#"
+                }, 
+                {
+                    "title" : "Sub Menu 3",
+                    "link" : "#"
+                }, 
+                {
+                    "type" : "search", 
+                    "snippet" : "search_box_item"
+                }
+            ]
+        }, 
+        {
+            "title" : "Customer Service",
+            "link" : "#"
+        }, 
+        {
+            "title" : "My Account", 
+            "link" : "#"
+        }, 
+        {
+            "title" : "Settings",
+            "link" : "#"
+        }, 
+        {
+            "title" : "SingIn",
+            "link" : "#"
+        }
+    ]
+}

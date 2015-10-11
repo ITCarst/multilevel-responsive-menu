@@ -24,7 +24,7 @@ var karma = require("karma").server;
 
 //jshint - client js
 gulp.task("lint-client", function () {
-    return gulp.src(["public/js/**/*.js", "!public/js/libs/**", "!public/js/build.js"])
+    return gulp.src(["public/js/**/*.js", "!public/js/build.js"])
         .pipe(jshint())
         .pipe(jshint.reporter("default"));
 });
@@ -40,7 +40,12 @@ gulp.task("lint-test", function () {
 gulp.task("babel", function () {
     return gulp.src("public/js/**/*.js")
         .pipe(babel())
-        .pipe(gulp.dest("dist/"));
+        .pipe(gulp.dest("dist/js/"));
+});
+
+gulp.task("copy-data", function () {
+    return gulp.src("public/js/data/*")
+        .pipe(gulp.dest("dist/js/data"))
 });
 
 
@@ -84,18 +89,18 @@ gulp.task("build", function () {
 gulp.task("sass", function () {
     return gulp.src("public/scss/*.scss", {style : "expanded"})
         .pipe(sass())
-        .pipe(gulp.dest("./dist"))
+        .pipe(gulp.dest("./dist/css"))
         .pipe(notify({message : "Styles completed!"}));
 });
 
 //Clean
 gulp.task("clean", function () {
-    del(["../dist"]);
+    del(["./dist"]);
 });
 
 
 gulp.task("default", function () {
-    gulp.start("babel", "sass", "testOnce");
+    gulp.start("copy-data", "babel", "sass", "testOnce");
     //gulp.start("lint-client", "lint-test", "testOnce");
     //gulp.start("test_r", "build");
 });
@@ -108,12 +113,12 @@ gulp.task("watch", function () {
     //watch sass files
     gulp.watch("public/scss/*.scss", ["sass"]);
     gulp.watch("public/js/**/*.js", ["babel"]);
+    gulp.watch("public/js/data/*", ["copy-data"]);
     gulp.watch("test/**/*.test.js", ["test"]);
     //create livereaload
     livereload.listen();
     //watch the files on dist folder
-    gulp.watch(["dist/**"]).on("change", livereload.changed);
-
+    gulp.watch(["dist/js/"]).on("change", livereload.changed);
 });
 
 
