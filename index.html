@@ -10,28 +10,20 @@
     </head>
     <body>
 
-    <div class="container" id="container">
-        <div id="menu" class="menu_container">
-            <div class="navbar-header is_mobile">
-                <div class="clear clearfix"></div>
-            </div>
+    <div class="container">
 
-            <ul class="top_lvl" id="top_lvl">
-                <li class="selected">
-                    <a href="#">Shop</a>
-                    <ul class="menu_submenu second_lvl clearfix show">
-                        <li class="active">
-                            <a href="#">Ladies</a>
-                            <ul class="menu_submenu third_lvl show clearfix">
+        <nav class="menu_holder">
+            <ul>
+                <li class="selected"><a href="#">Shop</a>
+                    <ul class="subnav">
+                        <li><a href="#">Ladies</a>
+                            <ul>
                                 <li><a href="#">Luxury Brands</a></li>
-                                <li class="active">
-                                    <a href="#">Clothing</a>
-
-                                    <div class="menu_dropdown_block clearfix">
-
+                                <li><a href="#">Clothing</a>
+                                    <div class="">
                                         <div class="column">
                                             <h2>Clothing Categories</h2>
-                                            <ul class="menu_submenu_block clearfix">
+                                            <ul class="">
                                                 <li><a href="#">Blazers</a></li>
                                                 <li><a href="#">Blouse and tunics</a></li>
                                                 <li><a href="#">Pants</a></li>
@@ -47,10 +39,10 @@
 
                                         <div class="column">
                                             <h2>Women's Brands</h2>
-                                            <ul class="menu_submenu_block">
-                                                <li class="search_item">
-                                                    <form class="search_form in_menu" action="" method="post">
-                                                        <input type="text" placeholder="Zoek hier op merk" />
+                                            <ul>
+                                                <li>
+                                                    <form class="" action="" method="post">
+                                                        <input type="text" placeholder="Search for brand" />
                                                         <input type="submit" value=""/>
                                                     </form>
                                                 </li>
@@ -68,13 +60,13 @@
                                                 <li><a href="#">Hackett</a></li>
                                                 <li><a href="#">Hanro</a></li>
                                                 <li><a href="#">Happy Socks</a></li>
-                                                <li><a href="#" class="bold">Alle damesmmerken A-Z</a></li>
+                                                <li><a href="#">Alle damesmmerken A-Z</a></li>
                                             </ul>
                                         </div>
 
                                         <div class="column">
                                             <h2>Campaigns</h2>
-                                            <ul class="menu_submenu_block">
+                                            <ul class="">
                                                 <li><a href="#">Relaxed chic style</a></li>
                                                 <li><a href="#">All white</a></li>
                                                 <li><a href="#">Floral Print</a></li>
@@ -89,8 +81,8 @@
                                         </div>
 
                                         <div class="column">
-                                            <div class="gray_box">
-                                                <p class="title">- Trend -</p>
+                                            <div class="">
+                                                <p class="">- Trend -</p>
                                                 <div>Retro</div>
                                                 <p>
                                                     Not the sweet colors we are used to, but 
@@ -100,8 +92,8 @@
                                             </div>
                                         </div>
                                         <div class="column">
-                                            <div class="gray_box">
-                                                <p class="title">- NEW -</p>
+                                            <div>
+                                                <p>- NEW -</p>
                                                 <div>Hipster</div>
                                                 <p>
                                                     Lorem Ipsum is simply dummy text of the printing 
@@ -124,10 +116,9 @@
                         <li><a href="#">Men</a></li>
                         <li><a href="#">Children</a></li>
                         <li><a href="#">Lifestyle</a></li>
-                        <li class="right search_item">
-
-                            <form class="search_form first_lvl" action="" method="post">
-                                <input type="text" placeholder="Zoek hier op merk" />
+                        <li>
+                            <form class="" action="" method="post">
+                                <input type="text" placeholder="Search for brand" />
                                 <input type="submit" value=""/>
                             </form>
 
@@ -137,15 +128,14 @@
                 <li><a href="#">Inspiration & looks</a></li>
                 <li>
                     <a href="#">Affiliates</a>
-                    <ul class="menu_submenu clearfix hide">
+                    <ul class="subnav hidden">
                         <li><a href="#">Sub Menu 3</a></li>
                         <li><a href="#">Sub Menu 3</a></li>
                         <li><a href="#">Sub Menu 3</a></li>
                         <li><a href="#">Sub Menu 3</a></li>
-                        <li class="right search_item">
-
-                            <form class="search_form first_lvl" action="" method="post">
-                                <input type="text" placeholder="Zoek hier op merk" />
+                        <li>
+                            <form class="" action="" method="post">
+                                <input type="text" placeholder="Search for a brand" />
                                 <input type="submit" value=""/>
                             </form>
 
@@ -153,14 +143,15 @@
                     </ul>
                 </li>
                 <li><a href="#">Customer Service</a></li>
-                <li class="is_mobile"><a href="#">My Account</a></li>
-                <li class="not_mobile right"><a href="#">Settings</a></li>
-                <li class="not_mobile right"><a href="#">SingIn</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">SingIn</a></li>
             </ul>
-        </div><!-- /menu -->
+        </nav><!-- /menu -->
 
-        <div class="clear"></div>
     </div><!-- page -->
-        <script data-main="./dist/js/main.js" src="node_modules/requirejs/require.js"></script>
+
+    <script data-main="./dist/js/main.js" src="node_modules/requirejs/require.js"></script>
+
     </body>
 </html>

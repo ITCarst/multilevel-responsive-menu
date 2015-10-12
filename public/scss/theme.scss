@@ -1,0 +1,44 @@
+body {
+    font: normal 16px Arial, Helvetica, sans-serif;
+    background: #F6F6F6;
+} 
+ 
+.menu_holder {
+    background: #fff;
+    color: #f66d52;
+
+    ul {
+        border-bottom: 1px solid #edeaea;
+
+        li {
+            border-right: 1px solid rgba(204, 204, 204, .2);
+
+            a {
+                text-decoration: none;
+                color: #f66d52;
+                font-size: .8em;
+
+                &:hover {
+                    background: rgba(82, 192, 172, .1);
+                    color: #67a0a6;
+                }
+            }
+            &.selected {
+                background: #52C0B1;
+            }
+            &.selected >  a  {
+                 color: #fff;
+            }
+
+            ul {
+                
+                li {
+                    border-right: none;
+                }
+            }
+        }
+    }
+ }
+
+
+

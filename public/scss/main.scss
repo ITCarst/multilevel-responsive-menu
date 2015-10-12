@@ -1,15 +1,86 @@
+@import "_vars.scss";
+@import "_media.scss";
+@import "theme.scss";
+
+html {
+    overflow-y: scroll;
+}
+
 body, html {
     margin: 0;
     padding: 0;
     min-height: 100hv;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.hidden {
+    display: none !important;
+}
+/*
+Main Container ===============================
+*/
+.container {
+    @include flexbox();
+    @include flexdirection(row);
+    @include justifycontent(flex-start);
+    @include flex(100%);
+
+    .menu_holder {
+        @include flexbox();
+        @include flex(100%);
+        @include flexdirection(row);
+        @include flexWrap(nowrap);
+
+        ul {
+            width: 100%;
+            margin: 0;
+            padding: 0; 
+            list-style: none;
+            position: relative;
+
+            li {
+                //can't align-self: flex-end the last 3 items so use float for now
+                display: block;
+                float: left;
+
+                a {
+                    font-size: .8em;
+                    display: inline-block;
+                    padding: 1.2em 1em;
+                }
+                
+                &:nth-last-child(-n+3) {
+                    float: right;
+                }
+            }
+
+            &.subnav {
+                position: absolute;
+                right: 0;
+                padding: 0;
+                padding-left: 1em;
+                border-bottom: 1px solid #fff;
+
+                @include flexbox();
+                @include flex(100%);
+                @include justifycontent(flex-start);
+                @include flexdirection(row);
+
+                li {
+
+                    float: none;
+                    display: inline-block;
+
+
+                    ul {
+                        display: none;
+
+                        li {
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
-.menu_submenu {
-    display: none;
-}
+
