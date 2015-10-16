@@ -321,7 +321,7 @@ Main Container ===============================
       left: 0; }
       .container .menu_holder ul.subnav_second li:last-child {
         float: none; }
-    .container .menu_holder div.columns {
+    .container .menu_holder .columns {
       position: absolute;
       left: 0;
       -ms-box-orient: horizontal;
@@ -343,20 +343,20 @@ Main Container ===============================
       flex-wrap: nowrap;
       -webkit-flex-wrap: nowrap;
       padding: 1em; }
-      .container .menu_holder div.columns .column {
+      .container .menu_holder .columns .column {
         margin-right: 1em;
         flex-basis: 15%;
         -webkit-flex-basis: 15%; }
-        .container .menu_holder div.columns .column:nth-child(-n+2) {
+        .container .menu_holder .columns .column:nth-child(-n+2) {
           flex-basis: 19%;
           -webkit-flex-basis: 19%; }
-        .container .menu_holder div.columns .column ul {
+        .container .menu_holder .columns .column ul {
           line-height: 1.4em; }
-          .container .menu_holder div.columns .column ul li {
+          .container .menu_holder .columns .column ul li {
             display: block; }
-            .container .menu_holder div.columns .column ul li a {
+            .container .menu_holder .columns .column ul li a {
               padding: 0; }
-        .container .menu_holder div.columns .column.col_txt {
+        .container .menu_holder .columns .column.col_txt {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -373,32 +373,40 @@ Main Container ===============================
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
     .container {
       max-width: 98%; }
-      .container .menu_holder div.columns .column {
+      .container .menu_holder .columns .column {
         flex-basis: 21%;
         -webkit-flex-basis: 21%; }
-        .container .menu_holder div.columns .column:nth-child(-n+2) {
+        .container .menu_holder .columns .column:nth-child(-n+2) {
           flex-basis: 21%;
           -webkit-flex-basis: 21%; }
-        .container .menu_holder div.columns .column.column.col_txt {
+        .container .menu_holder .columns .column.column.col_txt {
           margin-right: 0;
           flex-basis: 30%;
           -webkit-flex-basis: 30%; }
-          .container .menu_holder div.columns .column.column.col_txt:last-child {
+          .container .menu_holder .columns .column.column.col_txt:last-child {
             display: none; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
     .container {
       max-width: 100%;
       background: black !important; }
-      .container .menu_holder div.columns {
+      .container .menu_holder .columns {
         width: 100%; }
-        .container .menu_holder div.columns .column {
+        .container .menu_holder .columns .column {
           -webkit-flex-basis: 30%;
           flex-basis: 30%; }
-          .container .menu_holder div.columns .column:nth-child(-n+2) {
+          .container .menu_holder .columns .column:nth-child(-n+2) {
             flex-basis: 30%;
             -webkit-flex-basis: 30%; }
-        .container .menu_holder div.columns .column.col_txt {
+        .container .menu_holder .columns .column.col_txt {
           display: none; } }
-  @media only screen and (min-width: 321px) and (max-width: 667px) {
-    .container .menu_holder ul.subnav_second {
-      font-size: .9em; } }
+  @media only screen and (min-width: 481px) and (max-width: 667px) {
+    .container {
+      background: red !important;
+      max-width: 100%; }
+      .container .menu_holder ul.subnav_second {
+        font-size: .9em; }
+      .container .menu_holder div.columns .column.col_txt {
+        display: none; } }
+  @media only screen and (min-width: 321px) and (max-width: 480px) {
+    .container {
+      background: blue !important; } }

@@ -6,7 +6,7 @@
 
 
 //phones
-$handheld: 320px;
+$handheld: 320px; //change all to rem
 $handheld-land: 480px;
 
 // 5 ~ 7 inch phone/tablets
@@ -27,12 +27,16 @@ $tabletPort: portrait;
 
 @mixin respond-to($media) {
     //phone portrait
-    @if $media == handhelds {
+    @if $media == handheld {
         @media only screen and (max-width: $handheld) { @content; }
     }
-    //phone landscape or > 5''
+    //phone landscape
+    @else if $media == hand-land {
+        @media only screen and (min-width: $handheld + 1) and (max-width: $handheld-land) { @content; }
+    }
+    // > 5''
     @else if $media == phablet {
-        @media only screen and (min-width: $handheld + 1) and (max-width: $phablet) { @content; }
+        @media only screen and (min-width: $handheld-land + 1) and (max-width: $phablet) { @content; }
     }
     //portrait tablet
     @else if $media == medium-portrait {
