@@ -2,6 +2,7 @@
 @import "_media.scss";
 @import "theme.scss";
 
+
 html {
     overflow-y: scroll;
 }
@@ -12,9 +13,25 @@ body, html {
     min-height: 100hv;
 }
 
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 .hidden {
     display: none !important;
 }
+
 /*
 Main Container ===============================
 */
@@ -23,6 +40,10 @@ Main Container ===============================
     @include flexdirection(row);
     @include justifycontent(flex-start);
     @include flex(100%);
+    max-width: 80%;
+    margin: 2em auto;
+
+
 
     .menu_holder {
         @include flexbox();
@@ -30,10 +51,13 @@ Main Container ===============================
         @include flexdirection(row);
         @include flexWrap(nowrap);
 
+        /* 
+        * =========================================================================================
+        * First Level Menu
+        * ========================================================================================
+        */
         ul {
             width: 100%;
-            margin: 0;
-            padding: 0; 
             list-style: none;
             position: relative;
 
@@ -46,41 +70,195 @@ Main Container ===============================
                     font-size: .8em;
                     display: inline-block;
                     padding: 1.2em 1em;
-                }
-                
+                    position: relative;
+                }                
+            }           
+        }
+        //float right the last 3 items on the first level menu
+        ul:first-child {
+            > li {
                 &:nth-last-child(-n+3) {
                     float: right;
                 }
             }
+        }
 
-            &.subnav {
-                position: absolute;
-                right: 0;
-                padding: 0;
-                padding-left: 1em;
-                border-bottom: 1px solid #fff;
+        /*
+        * =====================================================================================
+        * Second Level Menu
+        * =====================================================================================
+        */
+        .subnav {
+            position: absolute;
+            right: 0;
+            padding: 0;
+            //display: none;
 
-                @include flexbox();
-                @include flex(100%);
-                @include justifycontent(flex-start);
-                @include flexdirection(row);
+            li {
+                float: none;
+                display: inline-block;
+                
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
 
-                li {
+        /*
+        * =============================================================================
+        * Second Subnav ul > ul > (ul)
+        * =============================================================================
+        */
+        ul.subnav_second {
+            display: block;
+            width: 100%;
+            position: absolute;
+            left: 0;
 
+            li {
+
+                &:last-child {
                     float: none;
-                    display: inline-block;
+                }
+
+            }
+        }
+        /*
+        * =============================================================================
+        * Third Level Menu - Columns
+        * =============================================================================
+        */
+        div.columns {
+            position: absolute;
+            left: 0;
+                
+            @include flexbox();
+            @include flex(100%);
+            @include flexdirection(row);
+            @include flexWrap(nowrap);
+            padding: 1em;
 
 
-                    ul {
-                        display: none;
+            .column {
+                margin-right: 1em;
+                flex-basis: 15%;
+                -webkit-flex-basis: 15%;
 
-                        li {
+                &:nth-child(-n+2) {
+                    flex-basis: 19%;
+                    -webkit-flex-basis: 19%;
+                }
+
+                ul {
+                    line-height: 1.4em;
+
+                    li {
+                        display: block;
+
+                        a {
+                            padding: 0;
+                                
+                        } 
+                    }
+                }
+
+                &.col_txt {
+                    @include flexbox();
+                    align-items: center;
+                   
+                    -webkit-flex-basis: 20%;
+                }
+
+            }
+        }
+    }
+
+    /*
+    * =========================================================================================
+    * Desktop
+    * =========================================================================================
+    */
+    @include respond-to(wide) {
+        max-width: 95%;
+    }
+    
+    /*
+    * =========================================================================================
+    * Tablet Landscape
+    * =========================================================================================
+    */
+    @include respond-to(medium) { 
+        max-width: 98%;
+
+        .menu_holder { 
+            div.columns {
+                 .column {
+                     
+                     flex-basis: 21%;
+                     -webkit-flex-basis: 21%;
+
+                     &:nth-child(-n+2) { 
+                        flex-basis: 21%;
+                        -webkit-flex-basis: 21%;
+                    }
+
+                     &.column.col_txt {
+                        margin-right: 0;
+
+                        flex-basis: 30%;
+                        -webkit-flex-basis: 30%;
+
+                        &:last-child {
+                            display: none;
                         }
                     }
                 }
             }
         }
     }
+
+    /*
+    * =========================================================================================
+    * Tablet Portrait
+    * =========================================================================================
+    */
+    @include respond-to(medium-portrait) { 
+        max-width: 100%;
+        background: black !important;
+
+        .menu_holder {
+            div.columns {
+                width: 100%;
+                .column {
+                    -webkit-flex-basis: 30%;
+                    flex-basis: 30%;
+
+                    &:nth-child(-n+2) {
+                        flex-basis: 30%;
+                        -webkit-flex-basis:30%;
+                    }
+                }
+                .column.col_txt {
+                    display: none;
+                } 
+            }
+        }
+
+    }
+
+    /*
+    * =========================================================================================
+    * Tablet Portrait
+    * ========================================================================================
+    */
+    @include respond-to(phablet) {
+        .menu_holder { 
+            ul.subnav_second {
+                font-size: .9em;
+            }
+        }
+    }
+   
 }
 
 

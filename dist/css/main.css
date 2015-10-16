@@ -1,27 +1,185 @@
+/*
+* ================================================================================================================
+* Media Queries - mixins
+* ================================================================================================================
+*/
 body {
   font: normal 16px Arial, Helvetica, sans-serif;
   background: #F6F6F6; }
 
+/*
+* ========================================================================================= 
+* Main Container
+* =========================================================================================  
+*/
+h2 {
+  margin: 0;
+  padding: 0; }
+
+h2 {
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 0 0 10px 0; }
+
+h3 {
+  font-weight: normal;
+  color: #000;
+  text-transform: uppercase; }
+
 .menu_holder {
   background: #fff;
-  color: #f66d52; }
-  .menu_holder ul {
+  color: #f66d52;
+  /*
+    * =========================================================================================
+    * First Level Menu
+    * =========================================================================================
+    */
+  /*
+    * ========================================================================================
+    * Second Level Menu
+    * ========================================================================================
+    */
+  /*
+    * =============================================================================
+    * Second Subnav ul > ul > (ul)
+    * =============================================================================
+    */
+  /*
+    * =============================================================================
+    * Third Level Menu - Columns
+    * =============================================================================
+    */ }
+  .menu_holder > ul {
     border-bottom: 1px solid #edeaea; }
-    .menu_holder ul li {
+    .menu_holder > ul > li {
       border-right: 1px solid rgba(204, 204, 204, 0.2); }
-      .menu_holder ul li a {
+      .menu_holder > ul > li a {
         text-decoration: none;
         color: #f66d52;
         font-size: .8em; }
-        .menu_holder ul li a:hover {
-          background: rgba(82, 192, 172, 0.1);
-          color: #67a0a6; }
-      .menu_holder ul li.selected {
+      .menu_holder > ul > li.selected {
         background: #52C0B1; }
-      .menu_holder ul li.selected > a {
+      .menu_holder > ul > li.selected > a {
         color: #fff; }
-      .menu_holder ul li ul li {
-        border-right: none; }
+  .menu_holder ul.subnav {
+    border-bottom: 1px solid #edeaea; }
+    .menu_holder ul.subnav li {
+      border-right: none; }
+      .menu_holder ul.subnav li a {
+        position: relative; }
+        .menu_holder ul.subnav li a:hover {
+          background: none;
+          color: #888; }
+          .menu_holder ul.subnav li a:hover:after {
+            border-bottom: 3px solid #000;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            left: 0;
+            content: ''; }
+      .menu_holder ul.subnav li.active a {
+        position: relative; }
+        .menu_holder ul.subnav li.active a:after {
+          border-bottom: 3px solid #000;
+          position: absolute;
+          bottom: 10px;
+          width: 100%;
+          left: 0;
+          content: ''; }
+  .menu_holder .subnav_second li a:after {
+    display: none; }
+  .menu_holder .subnav_second li a:after {
+    border: none;
+    position: relative; }
+  .menu_holder .subnav_second li:first-child {
+    margin: 0; }
+  .menu_holder .subnav_second li.active a:after {
+    border-bottom: 3px solid #000;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    content: ''; }
+  .menu_holder div.columns {
+    background: #fff; }
+    .menu_holder div.columns .column {
+      color: #707070; }
+      .menu_holder div.columns .column > div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -webkit-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1em; }
+      .menu_holder div.columns .column ul {
+        border: none; }
+        .menu_holder div.columns .column ul li a {
+          color: #707070; }
+          .menu_holder div.columns .column ul li a:hover {
+            color: #307267; }
+      .menu_holder div.columns .column.col_txt {
+        color: #db553d;
+        background: #EDEDED;
+        border: 1px solid #e5e3e3;
+        font-size: .9em; }
+        .menu_holder div.columns .column.col_txt button {
+          border: none;
+          background: #F2F2F2;
+          border: 1px solid #ccc;
+          outline: none;
+          padding: 1em 2em;
+          font-size: .7em;
+          color: #707070; }
+          .menu_holder div.columns .column.col_txt button:hover, .menu_holder div.columns .column.col_txt button:active {
+            opacity: .7; }
+    .menu_holder div.columns a:after {
+      border: none;
+      position: relative; }
+
+.bounce-bottom {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s; }
+  .bounce-bottom:hover {
+    color: #fff; }
+    .bounce-bottom:hover:before {
+      -webkit-transform: scaleY(1);
+      transform: scaleY(1);
+      -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+      transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
+  .bounce-bottom:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #2098d1;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; }
 
 html {
   overflow-y: scroll; }
@@ -30,6 +188,19 @@ body, html {
   margin: 0;
   padding: 0;
   min-height: 100hv; }
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+ul {
+  margin: 0;
+  padding: 0; }
 
 .hidden {
   display: none !important; }
@@ -58,7 +229,29 @@ Main Container ===============================
   -moz-box-flex: 100%;
   -webkit-flex: 100%;
   -ms-flex: 100%;
-  flex: 100%; }
+  flex: 100%;
+  max-width: 80%;
+  margin: 2em auto;
+  /*
+    * =========================================================================================
+    * Desktop
+    * =========================================================================================
+    */
+  /*
+    * =========================================================================================
+    * Tablet Landscape
+    * =========================================================================================
+    */
+  /*
+    * =========================================================================================
+    * Tablet Portrait
+    * =========================================================================================
+    */
+  /*
+    * =========================================================================================
+    * Tablet Portrait
+    * ========================================================================================
+    */ }
   .container .menu_holder {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -77,11 +270,29 @@ Main Container ===============================
     -ms-flex-direction: row;
     flex-direction: row;
     flex-wrap: nowrap;
-    -webkit-flex-wrap: nowrap; }
+    -webkit-flex-wrap: nowrap;
+    /* 
+        * =========================================================================================
+        * First Level Menu
+        * ========================================================================================
+        */
+    /*
+        * =====================================================================================
+        * Second Level Menu
+        * =====================================================================================
+        */
+    /*
+        * =============================================================================
+        * Second Subnav ul > ul > (ul)
+        * =============================================================================
+        */
+    /*
+        * =============================================================================
+        * Third Level Menu - Columns
+        * =============================================================================
+        */ }
     .container .menu_holder ul {
       width: 100%;
-      margin: 0;
-      padding: 0;
       list-style: none;
       position: relative; }
       .container .menu_holder ul li {
@@ -90,38 +301,104 @@ Main Container ===============================
         .container .menu_holder ul li a {
           font-size: .8em;
           display: inline-block;
-          padding: 1.2em 1em; }
-        .container .menu_holder ul li:nth-last-child(-n+3) {
+          padding: 1.2em 1em;
+          position: relative; }
+    .container .menu_holder ul:first-child > li:nth-last-child(-n+3) {
+      float: right; }
+    .container .menu_holder .subnav {
+      position: absolute;
+      right: 0;
+      padding: 0; }
+      .container .menu_holder .subnav li {
+        float: none;
+        display: inline-block; }
+        .container .menu_holder .subnav li:last-child {
           float: right; }
-      .container .menu_holder ul.subnav {
-        position: absolute;
-        right: 0;
-        padding: 0;
-        padding-left: 1em;
-        border-bottom: 1px solid #fff;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: -webkit-flexbox;
-        display: flex;
-        -webkit-box-flex: 100%;
-        -moz-box-flex: 100%;
-        -webkit-flex: 100%;
-        -ms-flex: 100%;
-        flex: 100%;
-        -webkit-box-pack: flex-start;
-        -moz-box-pack: flex-start;
-        -ms-flex-pack: flex-start;
-        -webkit-justify-content: flex-start;
-        justify-content: flex-start;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row; }
-        .container .menu_holder ul.subnav li {
-          float: none;
-          display: inline-block; }
-          .container .menu_holder ul.subnav li ul {
-            display: none; }
+    .container .menu_holder ul.subnav_second {
+      display: block;
+      width: 100%;
+      position: absolute;
+      left: 0; }
+      .container .menu_holder ul.subnav_second li:last-child {
+        float: none; }
+    .container .menu_holder div.columns {
+      position: absolute;
+      left: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: -webkit-flexbox;
+      display: flex;
+      -webkit-box-flex: 100%;
+      -moz-box-flex: 100%;
+      -webkit-flex: 100%;
+      -ms-flex: 100%;
+      flex: 100%;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      padding: 1em; }
+      .container .menu_holder div.columns .column {
+        margin-right: 1em;
+        flex-basis: 15%;
+        -webkit-flex-basis: 15%; }
+        .container .menu_holder div.columns .column:nth-child(-n+2) {
+          flex-basis: 19%;
+          -webkit-flex-basis: 19%; }
+        .container .menu_holder div.columns .column ul {
+          line-height: 1.4em; }
+          .container .menu_holder div.columns .column ul li {
+            display: block; }
+            .container .menu_holder div.columns .column ul li a {
+              padding: 0; }
+        .container .menu_holder div.columns .column.col_txt {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: -webkit-flexbox;
+          display: flex;
+          align-items: center;
+          -webkit-flex-basis: 20%; }
+  @media only screen and (min-width: 1024px) {
+    .container {
+      max-width: 95%; } }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      max-width: 98%; }
+      .container .menu_holder div.columns .column {
+        flex-basis: 21%;
+        -webkit-flex-basis: 21%; }
+        .container .menu_holder div.columns .column:nth-child(-n+2) {
+          flex-basis: 21%;
+          -webkit-flex-basis: 21%; }
+        .container .menu_holder div.columns .column.column.col_txt {
+          margin-right: 0;
+          flex-basis: 30%;
+          -webkit-flex-basis: 30%; }
+          .container .menu_holder div.columns .column.column.col_txt:last-child {
+            display: none; } }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .container {
+      max-width: 100%;
+      background: black !important; }
+      .container .menu_holder div.columns {
+        width: 100%; }
+        .container .menu_holder div.columns .column {
+          -webkit-flex-basis: 30%;
+          flex-basis: 30%; }
+          .container .menu_holder div.columns .column:nth-child(-n+2) {
+            flex-basis: 30%;
+            -webkit-flex-basis: 30%; }
+        .container .menu_holder div.columns .column.col_txt {
+          display: none; } }
+  @media only screen and (min-width: 321px) and (max-width: 667px) {
+    .container .menu_holder ul.subnav_second {
+      font-size: .9em; } }

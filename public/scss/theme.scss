@@ -1,44 +1,260 @@
+@import "_vars.scss";
+
 body {
     font: normal 16px Arial, Helvetica, sans-serif;
     background: #F6F6F6;
 } 
- 
+
+/*
+* ========================================================================================= 
+* Main Container
+* =========================================================================================  
+*/
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+}
+
+h3 {
+    font-weight: normal;
+    color: #000;
+    text-transform: uppercase;
+}
+
 .menu_holder {
     background: #fff;
     color: #f66d52;
 
-    ul {
+    /*
+    * =========================================================================================
+    * First Level Menu
+    * =========================================================================================
+    */
+    > ul {
         border-bottom: 1px solid #edeaea;
 
-        li {
+        > li {
             border-right: 1px solid rgba(204, 204, 204, .2);
 
             a {
                 text-decoration: none;
                 color: #f66d52;
                 font-size: .8em;
-
-                &:hover {
-                    background: rgba(82, 192, 172, .1);
-                    color: #67a0a6;
-                }
             }
+            
             &.selected {
                 background: #52C0B1;
             }
             &.selected >  a  {
                  color: #fff;
+            }           
+        }
+    }
+
+    /*
+    * ========================================================================================
+    * Second Level Menu
+    * ========================================================================================
+    */
+    ul.subnav {
+        border-bottom: 1px solid #edeaea;
+        
+        li {
+            border-right: none;
+
+            a {
+
+                position: relative;
+
+                &:hover {
+                    background: none;   
+                    color: #888;
+                    
+                    &:after {
+                        border-bottom: 3px solid #000;
+                        position: absolute;
+                        bottom: 10px;
+                        width: 100%;
+                        left: 0;
+                        content: '';
+                    }
+                }
+            }
+
+            &.active {
+
+                a {
+                    position: relative;
+
+                    &:after {
+                        border-bottom: 3px solid #000;
+                        position: absolute;
+                        bottom: 10px;
+                        width: 100%;
+                        left: 0;
+                        content: ''; 
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+    * =============================================================================
+    * Second Subnav ul > ul > (ul)
+    * =============================================================================
+    */
+    .subnav_second {
+
+        li {
+            a {
+                &:after {
+                    display: none;
+                } 
+            }
+
+            a {
+
+                &:after {
+                    border: none;
+                    position: relative;
+                }
+            
+            }
+            
+            &:first-child {
+                margin: 0;
+            }
+
+            &.active {
+                a {
+                    
+                    &:after {
+                         border-bottom: 3px solid #000;
+                         position: absolute;
+                         bottom: 10px;
+                         width: 100%;
+                         left: 0;
+                         content: '';
+                    }
+                }
+            }
+
+        }
+    }
+    /*
+    * =============================================================================
+    * Third Level Menu - Columns
+    * =============================================================================
+    */
+    div.columns {
+        background: #fff;
+
+        .column {
+            color: #707070;
+
+            > div {
+                @include flexbox();
+                @include flexdirection(column);
+                align-items: center;
+                text-align: center;
+                padding: 1em;
             }
 
             ul {
-                
+                border: none; 
+
                 li {
-                    border-right: none;
+                    a {
+                        color: #707070;
+
+                        &:hover {
+                            color: #307267;
+                        }
+                    }
                 }
+            }
+            &.col_txt {
+                color: #db553d;
+                background: #EDEDED;
+                border: 1px solid #e5e3e3;
+                font-size:.9em;
+
+                button {
+                    border: none;
+                    background: #F2F2F2;
+                    border: 1px solid #ccc;
+                    outline: none;
+                    padding: 1em 2em;
+                    font-size: .7em;
+                    color: #707070;
+
+                    &:hover, &:active {
+                        opacity: .7;
+                    }
+                }
+            }
+        }
+
+        a {
+            &:after {
+                border: none;
+                position: relative;
             }
         }
     }
  }
 
+.bounce-bottom {
+    
+     -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+
+    &:hover {
+       // background: rgba(82, 192, 172, .1);
+        color: #fff;
+
+        &:before {
+             -webkit-transform: scaleY(1);
+             transform: scaleY(1);
+             -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+             transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #2098d1;
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+}
 
 

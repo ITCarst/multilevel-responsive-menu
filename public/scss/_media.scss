@@ -1,0 +1,49 @@
+/*
+* ================================================================================================================
+* Media Queries - mixins
+* ================================================================================================================
+*/
+
+
+//phones
+$handheld: 320px;
+$handheld-land: 480px;
+
+// 5 ~ 7 inch phone/tablets
+$phablet: 667px;
+//$375: 375px;
+//$667: 667px;
+//$414: 414px;
+//$736: 736px;
+//$568: 568px;
+
+
+//tablet
+$medium: 768px;
+$wide: 1024px;
+$tabletLand : landscape;
+$tabletPort: portrait;
+
+
+@mixin respond-to($media) {
+    //phone portrait
+    @if $media == handhelds {
+        @media only screen and (max-width: $handheld) { @content; }
+    }
+    //phone landscape or > 5''
+    @else if $media == phablet {
+        @media only screen and (min-width: $handheld + 1) and (max-width: $phablet) { @content; }
+    }
+    //portrait tablet
+    @else if $media == medium-portrait {
+        @media only screen and (min-width: $handheld-land) and (max-width: $medium - 1) { @content; }
+    }
+    //landscape tablet
+    @else if $media == medium {
+        @media only screen and (min-width: $medium) and (max-width: $wide - 1) { @content; }
+    }
+    @else if $media == wide {
+        @media only screen and (min-width: $wide) { @content; }
+    }
+}
+
