@@ -187,7 +187,7 @@ html {
 body, html {
   margin: 0;
   padding: 0;
-  min-height: 100hv; }
+  min-height: 100vh; }
 
 * {
   box-sizing: border-box;
@@ -249,9 +249,11 @@ Main Container ===============================
     */
   /*
     * =========================================================================================
-    * Tablet Portrait
+    * > 5'' phones landscape
     * ========================================================================================
     */ }
+  .container .nav_mob {
+    display: none; }
   .container .menu_holder {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -404,9 +406,36 @@ Main Container ===============================
       background: red !important;
       max-width: 100%; }
       .container .menu_holder ul.subnav_second {
+        display: flex;
         font-size: .9em; }
       .container .menu_holder div.columns .column.col_txt {
         display: none; } }
-  @media only screen and (min-width: 321px) and (max-width: 480px) {
+  @media only screen and (max-width: 480px) {
     .container {
-      background: blue !important; } }
+      background: orange !important;
+      max-width: 100%;
+      margin: 0; }
+      .container .menu_holder ul li {
+        float: none; }
+        .container .menu_holder ul li a {
+          display: block; }
+        .container .menu_holder ul li:nth-last-child(-n+3) {
+          display: inline-block;
+          margin: 0 auto;
+          width: 32%;
+          text-align: center; }
+      .container .menu_holder ul.subnav {
+        display: none; }
+        .container .menu_holder ul.subnav li {
+          display: block; }
+          .container .menu_holder ul.subnav li:last-child {
+            float: none; }
+      .container .menu_holder ul.subnav_second {
+        display: none; }
+      .container .nav_mob {
+        display: block;
+        position: absolute;
+        z-index: 2; } }
+  @media only screen and (max-width: 480px) {
+    .container {
+      background: purple !important; } }

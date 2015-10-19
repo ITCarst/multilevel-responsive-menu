@@ -28,11 +28,11 @@ $tabletPort: portrait;
 @mixin respond-to($media) {
     //phone portrait
     @if $media == handheld {
-        @media only screen and (max-width: $handheld) { @content; }
+        @media only screen and (max-width: $handheld-land) { @content; }
     }
     //phone landscape
     @else if $media == hand-land {
-        @media only screen and (min-width: $handheld + 1) and (max-width: $handheld-land) { @content; }
+        @media only screen and (max-width: $handheld-land) { @content; }
     }
     // > 5''
     @else if $media == phablet {

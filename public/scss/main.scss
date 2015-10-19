@@ -10,7 +10,7 @@ html {
 body, html {
     margin: 0;
     padding: 0;
-    min-height: 100hv;
+    min-height: 100vh;
 }
 
 * {
@@ -43,7 +43,9 @@ Main Container ===============================
     max-width: 80%;
     margin: 2em auto;
 
-
+    .nav_mob {
+        display: none;
+    }
 
     .menu_holder {
         @include flexbox();
@@ -249,7 +251,7 @@ Main Container ===============================
 
     /*
     * =========================================================================================
-    * Tablet Portrait
+    * > 5'' phones landscape
     * ========================================================================================
     */
     @include respond-to(phablet) {
@@ -258,6 +260,7 @@ Main Container ===============================
 
         .menu_holder { 
             ul.subnav_second {
+                display: flex;
                 font-size: .9em;
             }
 
@@ -273,9 +276,64 @@ Main Container ===============================
         }
     }
 
-    @include respond-to(hand-land) {
-        background: blue !important;
+    @include respond-to(handheld) {
+        background: orange !important;
+
+        max-width: 100%;
+        margin: 0;
+
+
+        .menu_holder {
+            ul {
+                li {
+                    float: none;
+
+                    a {
+                        display: block;
+                    }
+
+                    &:nth-last-child(-n+3) {
+                        display: inline-block;
+                        margin: 0 auto;
+                        width: 32%;
+                        text-align: center;
+                    }
+                }
+            }
+
+            ul.subnav {
+                display: none;
+                li {
+                   display: block;
+
+                    &:last-child {
+                        float: none;
+                    }
+
+                }
+            }
+
+            ul.subnav_second {
+                display: none;
+
+
+            }
+        }
+
+
+        .nav_mob {
+            display: block;
+            position: absolute;
+            z-index: 2;
+        }
     }
+
+
+    @include respond-to(handheld) {
+        background: purple !important;
+    }
+
+
    
 }
 
