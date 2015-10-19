@@ -181,9 +181,6 @@ h3 {
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out; }
 
-html {
-  overflow-y: scroll; }
-
 body, html {
   margin: 0;
   padding: 0;
@@ -416,7 +413,9 @@ Main Container ===============================
       max-width: 100%;
       margin: 0; }
       .container .menu_holder ul li {
-        float: none; }
+        float: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(204, 204, 204, 0.2); }
         .container .menu_holder ul li a {
           display: block; }
         .container .menu_holder ul li:nth-last-child(-n+3) {
@@ -427,11 +426,18 @@ Main Container ===============================
       .container .menu_holder ul.subnav {
         display: none; }
         .container .menu_holder ul.subnav li {
-          display: block; }
+          display: block;
+          text-align: left;
+          width: 100%; }
           .container .menu_holder ul.subnav li:last-child {
             float: none; }
       .container .menu_holder ul.subnav_second {
         display: none; }
+      .container .menu_holder .columns {
+        display: none;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column; }
       .container .nav_mob {
         display: block;
         position: absolute;

@@ -4,7 +4,7 @@
 
 
 html {
-    overflow-y: scroll;
+    //overflow-y: scroll;
 }
 
 body, html {
@@ -287,6 +287,8 @@ Main Container ===============================
             ul {
                 li {
                     float: none;
+                    border-right: none;
+                    border-bottom: 1px solid rgba(204, 204, 204, 0.2);
 
                     a {
                         display: block;
@@ -302,9 +304,12 @@ Main Container ===============================
             }
 
             ul.subnav {
-                display: none;
+               display: none;
+
                 li {
                    display: block;
+                   text-align: left;
+                   width: 100%;
 
                     &:last-child {
                         float: none;
@@ -315,8 +320,11 @@ Main Container ===============================
 
             ul.subnav_second {
                 display: none;
+            }
 
-
+            .columns {
+                display: none;
+                @include flexdirection(column);
             }
         }
 
@@ -333,8 +341,6 @@ Main Container ===============================
         background: purple !important;
     }
 
-
-   
 }
 
 
