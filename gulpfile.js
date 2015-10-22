@@ -38,7 +38,7 @@ gulp.task("lint-test", function () {
 
 
 gulp.task("babel", function () {
-    return gulp.src("public/js/**/*.js")
+    return gulp.src(["public/js/**/*.js", "public/js/tempaltes/*"])
         .pipe(babel())
         .pipe(gulp.dest("dist/js/"));
 });
@@ -93,11 +93,16 @@ gulp.task("sass", function () {
         .pipe(notify({message : "Styles completed!"}));
 });
 
+
+gulp.task("copy-templates", function () {
+    return gulp.src("public/js/templates/*")
+        .pipe(gulp.dest("dist/js/templates"))
+});
+
 //Clean
 gulp.task("clean", function () {
     del(["./dist"]);
 });
-
 
 gulp.task("default", function () {
     gulp.start("copy-data", "babel", "sass", "testOnce");
@@ -114,6 +119,7 @@ gulp.task("watch", function () {
     gulp.watch("public/scss/*.scss", ["sass"]);
     gulp.watch("public/js/**/*.js", ["babel"]);
     gulp.watch("public/js/data/*", ["copy-data"]);
+    gulp.watch("public/js/templates/*.html", ["copy-templates"]);
     gulp.watch("test/**/*.test.js", ["test"]);
     //create livereaload
     livereload.listen();

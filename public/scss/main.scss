@@ -36,13 +36,9 @@ ul {
 Main Container ===============================
 */
 .container {
-    @include flexbox();
-    @include flexdirection(row);
-    @include justifycontent(flex-start);
-    @include flex(100%);
     max-width: 80%;
     margin: 2em auto;
-
+    
     .nav_mob {
         display: none;
     }
@@ -77,7 +73,7 @@ Main Container ===============================
             }           
         }
         //float right the last 3 items on the first level menu
-        ul:first-child {
+        > ul {
             > li {
                 &:nth-last-child(-n+3) {
                     float: right;
@@ -94,7 +90,7 @@ Main Container ===============================
             position: absolute;
             right: 0;
             padding: 0;
-            //display: none;
+            display: none;
 
             li {
                 float: none;
@@ -276,14 +272,19 @@ Main Container ===============================
         }
     }
 
+    /*
+    * =========================================================================================
+    * Burger type menu
+    * ========================================================================================
+    */
     @include respond-to(handheld) {
         background: orange !important;
 
         max-width: 100%;
         margin: 0;
 
-
         .menu_holder {
+
             ul {
                 li {
                     float: none;
@@ -335,12 +336,6 @@ Main Container ===============================
             z-index: 2;
         }
     }
-
-
-    @include respond-to(handheld) {
-        background: purple !important;
-    }
-
 }
 
 

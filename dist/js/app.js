@@ -7,7 +7,8 @@ define(["app.c"], function (MenuController) {
         _classCallCheck(this, App);
 
         var controller = new MenuController(conf);
-        controller.loadView();
+        //render the view
+        controller.renderView();
     };
 
     return App;

@@ -4,18 +4,29 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-define(["app.v"], function (MenuView) {
+define(["app.m", "app.v"], function (MenuModel, MenuView) {
     var MenuController = (function () {
         function MenuController(conf) {
             _classCallCheck(this, MenuController);
 
+            this.model = new MenuModel();
+            this.data = this.loadData();
+
             this.view = new MenuView(conf);
+
+            console.log(this.view);
         }
 
         _createClass(MenuController, [{
-            key: "loadView",
-            value: function loadView() {
-                this.view.render();
+            key: "loadData",
+            value: function loadData() {
+                return this.model.loadData();
+            }
+        }, {
+            key: "renderView",
+            value: function renderView() {
+                //render the view template
+                this.view.render(this.data);
             }
         }]);
 

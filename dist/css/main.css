@@ -206,27 +206,6 @@ ul {
 Main Container ===============================
 */
 .container {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -webkit-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: flex-start;
-  -moz-box-pack: flex-start;
-  -ms-flex-pack: flex-start;
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
-  -webkit-box-flex: 100%;
-  -moz-box-flex: 100%;
-  -webkit-flex: 100%;
-  -ms-flex: 100%;
-  flex: 100%;
   max-width: 80%;
   margin: 2em auto;
   /*
@@ -247,6 +226,11 @@ Main Container ===============================
   /*
     * =========================================================================================
     * > 5'' phones landscape
+    * ========================================================================================
+    */
+  /*
+    * =========================================================================================
+    * Burger type menu
     * ========================================================================================
     */ }
   .container .nav_mob {
@@ -302,12 +286,13 @@ Main Container ===============================
           display: inline-block;
           padding: 1.2em 1em;
           position: relative; }
-    .container .menu_holder ul:first-child > li:nth-last-child(-n+3) {
+    .container .menu_holder > ul > li:nth-last-child(-n+3) {
       float: right; }
     .container .menu_holder .subnav {
       position: absolute;
       right: 0;
-      padding: 0; }
+      padding: 0;
+      display: none; }
       .container .menu_holder .subnav li {
         float: none;
         display: inline-block; }
@@ -442,6 +427,3 @@ Main Container ===============================
         display: block;
         position: absolute;
         z-index: 2; } }
-  @media only screen and (max-width: 480px) {
-    .container {
-      background: purple !important; } }

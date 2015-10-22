@@ -1,15 +1,13 @@
-define(["app.m"], function (MenuModel) {
+define(["app.c", "text!menuTmpl"], function (MenuController, tmpl) {
 
     class MenuView {
-        constructor (conf) {
-            let model = new MenuModel(conf);
-            this.data = model.loadData();
 
-            console.log(this.data);
-        }
-        render () {
+        constructor (conf, data) {
+            this.menuConf = conf;
+        }        
 
-            console.log("render view");
+        render (data) {
+            console.log(data);
         }
     }
 

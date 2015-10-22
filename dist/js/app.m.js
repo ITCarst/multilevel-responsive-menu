@@ -6,17 +6,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 define(["json!menuData"], function (data) {
     var MenuModel = (function () {
-        function MenuModel(conf) {
+        function MenuModel() {
             _classCallCheck(this, MenuModel);
-
-            this.conf = conf;
-            this.data = data;
         }
 
         _createClass(MenuModel, [{
             key: "loadData",
             value: function loadData() {
-                return this.data;
+                return data ? data : {};
             }
         }]);
 
