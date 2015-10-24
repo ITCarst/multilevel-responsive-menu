@@ -1,5 +1,7 @@
+"use strict";
+
 define(["app.c"], function (MenuController) {
-    
+
     describe("MenuController", function () {
 
         beforeEach(function () {
@@ -9,12 +11,11 @@ define(["app.c"], function (MenuController) {
                 config: {
                     menuClass: "menu_holder"
                 }
-            }
+            };
             this.controller = new MenuController(this.conf);
         });
 
-
-        describe("constructor" , function () {
+        describe("constructor", function () {
             it("should controller to be defined", function () {
                 expect(this.controller).toBeDefined();
             });
@@ -27,6 +28,8 @@ define(["app.c"], function (MenuController) {
         describe("model", function () {
             it("should have a model object with a URI", function () {
                 expect(this.controller.model).toEqual(jasmine.any(Object));
+                expect(this.controller.model.dataURI).toBeDefined();
+                expect(this.controller.model.dataURI).toEqual("data/menu.data.json");
             });
         });
 
@@ -45,8 +48,6 @@ define(["app.c"], function (MenuController) {
                 expect(this.controller.view).toBeDefined();
                 expect(this.controller.view).toEqual(jasmine.any(Object));
             });
-
-
         });
 
         describe("loadData", function () {
@@ -81,16 +82,12 @@ define(["app.c"], function (MenuController) {
                     expect(this.data.navigation).toEqual(jasmine.any(Object));
                     expect(this.data.navigation[0]).toEqual(jasmine.any(Object));
                     expect(this.data.navigation[0]).toEqual(jasmine.objectContaining({
-                        link : jasmine.any(String),
+                        link: jasmine.any(String),
                         title: jasmine.any(String),
                         subnav: jasmine.any(Object)
                     }));
                 });
-
             });
         });
-
     });
 });
-
-

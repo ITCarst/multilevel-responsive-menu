@@ -2,6 +2,7 @@ require.config({
     paths: {
         text: "../../node_modules/requirejs-plugins/lib/text",
         json: '../../node_modules/requirejs-plugins/src/json',
+        lodash : "../../node_modules/lodash/index",
         menuData: "data/menu.data.json",
         menuTmpl: "templates/menu.html"
     }
@@ -22,9 +23,9 @@ require(["app"], function (App) {
 
     //default
     let conf = {
-        data: "data/menu.data.json",
+        dataURI: "data/menu.data.json",
         config: {
-            menuClass: "menu_holder"
+            domEl: ".menu_holder"
         }
     }
 

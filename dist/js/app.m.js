@@ -4,7 +4,7 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-define(["json!menuData"], function (data) {
+define(function () {
     var MenuModel = (function () {
         function MenuModel() {
             _classCallCheck(this, MenuModel);
@@ -12,8 +12,10 @@ define(["json!menuData"], function (data) {
 
         _createClass(MenuModel, [{
             key: "loadData",
-            value: function loadData() {
-                return data ? data : {};
+            value: function loadData(dataURI) {
+                console.log(dataURI);
+                return "";
+                //return (this.data) ? this.data : {};
             }
         }]);
 

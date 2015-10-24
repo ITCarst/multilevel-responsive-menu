@@ -9,24 +9,39 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
         function MenuController(conf) {
             _classCallCheck(this, MenuController);
 
+            this.conf = conf;
+            //init the model with the url to retrive the data later
             this.model = new MenuModel();
-            this.data = this.loadData();
-
-            this.view = new MenuView(conf);
-
-            console.log(this.view);
+            //init the view
+            this.view = new MenuView();
+            //checks for different configurations sent on init
+            this.checksConf();
         }
 
         _createClass(MenuController, [{
+            key: "checksConf",
+            value: function checksConf() {
+                var menuClass = undefined;
+
+                if ('config' in this.conf) {
+                    if ('domEl' in this.conf.config) {
+                        menuClass = this.conf.config.domEl || "";
+                    }
+                }
+                //load the data from the model
+                this.data = this.loadData();
+            }
+        }, {
             key: "loadData",
             value: function loadData() {
-                return this.model.loadData();
+                return this.model.loadData(this.conf.dataURI);
             }
         }, {
             key: "renderView",
             value: function renderView() {
-                //render the view template
-                this.view.render(this.data);
+
+                //render the view
+                return this.view.render(this.data);
             }
         }]);
 

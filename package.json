@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/IonutC/multilevel-responsive-menu",
   "dependencies": {
+    "lodash": "^3.10.1",
     "requirejs-plugins": "^1.0.2"
   },
   "keywords": [

@@ -1,10 +1,12 @@
+"use strict";
+
 define(["app"], function (Menu) {
 
     describe("Menu Class", function () {
 
         beforeEach(function () {
             //default config
-            let conf = {
+            var conf = {
                 dataURI: "data/menu.data.json",
                 config: {
                     menuClass: "menu_holder"
@@ -16,5 +18,5 @@ define(["app"], function (Menu) {
         it("should return an object", function () {
             expect(this.menu).toEqual(jasmine.any(Object));
         });
-    })
-})
+    });
+});

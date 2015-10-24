@@ -38,7 +38,7 @@ gulp.task("lint-test", function () {
 
 
 gulp.task("babel", function () {
-    return gulp.src(["public/js/**/*.js", "public/js/tempaltes/*"])
+    return gulp.src(["public/js/**/*.js", "public/js/tempaltes/*", "test/**/*.js"])
         .pipe(babel())
         .pipe(gulp.dest("dist/js/"));
 });

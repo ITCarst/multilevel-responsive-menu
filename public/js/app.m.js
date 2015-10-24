@@ -1,9 +1,14 @@
-define(["json!menuData"], function (data) {
+define(function () {
 
     class MenuModel {
 
-        loadData () {
-            return (data) ? data : {};
+        constructor() {
+        }
+
+        loadData (dataURI) {
+            console.log(dataURI);
+            return "";
+            //return (this.data) ? this.data : {};
         } 
     }
 

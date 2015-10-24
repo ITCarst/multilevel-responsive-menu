@@ -1,3 +1,5 @@
+"use strict";
+
 define(["app.m"], function (MenuModel) {
 
     describe("MenuModel", function () {
@@ -5,7 +7,7 @@ define(["app.m"], function (MenuModel) {
         beforeEach(function () {
             this.model = new MenuModel();
         });
-        
+
         it("should have loadData method", function () {
             expect(this.model.loadData).toBeDefined();
         });

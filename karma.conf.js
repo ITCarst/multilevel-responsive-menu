@@ -20,6 +20,7 @@ module.exports = function(config) {
 
         {pattern: "node_modules/requirejs-plugins/src/json.js", included: false},
         {pattern: "node_modules/requirejs-plugins/lib/text.js", included: false},
+        {pattern: "node_modules/lodash/index.js", included: false},
 
         'test/test-main.js'
     ],

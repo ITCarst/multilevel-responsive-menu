@@ -18,10 +18,13 @@ require.config({
     paths: {
         "text": "node_modules/requirejs-plugins/lib/text",
         "json" : "node_modules/requirejs-plugins/src/json",
+        "lodash" : "node_modules/lodash/index",
+
         "app": "public/js/app",
         "app.c" : "public/js/app.c",
         "app.v" : "public/js/app.v",
         "app.m" : "public/js/app.m",
+
         "menuData": "public/js/data/menu.data.json",
         "menuTmpl" : "public/js/templates/menu.html"
     },
