@@ -13,9 +13,25 @@ define(function () {
         _createClass(MenuModel, [{
             key: "loadData",
             value: function loadData(dataURI) {
-                console.log(dataURI);
-                return "";
-                //return (this.data) ? this.data : {};
+                if (!dataURI) return "Please provide a URI, to load data from";
+
+                return this.get(dataURI).then(JSON.parse);
+            }
+        }, {
+            key: "get",
+            value: function get(url) {
+                return new Promise(function (resolve, reject) {
+                    var req = new XMLHttpRequest();
+                    //request type
+                    req.open("GET", url);
+                    req.onload = function () {
+                        req.status == 200 ? resolve(req.response) : reject(Error(req.statusText));
+                    };
+                    req.onerror = function () {
+                        reject(Error("Network Error"));
+                    };
+                    req.send();
+                });
             }
         }]);
 

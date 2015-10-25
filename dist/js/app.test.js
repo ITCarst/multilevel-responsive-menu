@@ -7,7 +7,7 @@ define(["app"], function (Menu) {
         beforeEach(function () {
             //default config
             var conf = {
-                dataURI: "data/menu.data.json",
+                //dataURI: "public/js/data/menu.data.json",
                 config: {
                     menuClass: "menu_holder"
                 }

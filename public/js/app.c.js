@@ -1,5 +1,12 @@
 define(["app.m", "app.v"], function (MenuModel, MenuView) {
 
+    const defaults = {
+        dataURI: "./dist/js/data/menu.data.json",
+        menuClass: ".menu_holder"
+    };
+
+    console.log(defaults);
+
     class MenuController {
 
         constructor (conf) {
@@ -13,15 +20,24 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
         }
 
         checksConf () {
-            let menuClass;
+            let menuClass, that = this;
+            this.data = [];
 
+            //check for the menu class where the menu is going to be rendered
             if ('config' in this.conf) {
                 if ('domEl' in this.conf.config) {
-                    menuClass = this.conf.config.domEl || "";
+                    menuClass = this.conf.config.domEl || defaults.menuClass;
                 }
             }
+
+            //check for a URI if sent by user
+            if (!("dataURI" in this.conf) || this.conf.dataURI === "") this.conf.dataURI = defaults.dataURI;
+            
             //load the data from the model
-            this.data = this.loadData();
+            that.loadData().then( (data) => {
+                that.data.push(data); 
+                console.log(data);
+            });
         }
 
         loadData () {
@@ -29,8 +45,6 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
         }
 
         renderView () {
-            
-
             //render the view
             return this.view.render(this.data);
         }

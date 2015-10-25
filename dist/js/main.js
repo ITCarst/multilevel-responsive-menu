@@ -5,7 +5,7 @@ require.config({
         text: "../../node_modules/requirejs-plugins/lib/text",
         json: '../../node_modules/requirejs-plugins/src/json',
         lodash: "../../node_modules/lodash/index",
-        menuData: "data/menu.data.json",
+        menuData: "public/js/data/menu.data.json",
         menuTmpl: "templates/menu.html"
     }
 });
@@ -25,7 +25,7 @@ require(["app"], function (App) {
     //default
     //push-right, fixed
     var conf = {
-        dataURI: "data/menu.data.json",
+        dataURI: "./dist/js/data/menu.data.json",
         config: {
             domEl: ".menu_holder"
         }
