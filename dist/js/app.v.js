@@ -6,16 +6,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 define(["lodash", "app.c", "text!menuTmpl"], function (_, MenuController, template) {
     var MenuView = (function () {
-        function MenuView(menuClass) {
+        function MenuView() {
             _classCallCheck(this, MenuView);
 
-            this, menuClass = menuClass;
-            //this.tmpl = _.template(template);
+            this.template = template;
         }
 
         _createClass(MenuView, [{
             key: "render",
-            value: function render(data) {}
+            value: function render(data, menuClass) {
+                if (data.length <= 0) return "Please provide data";
+
+                data = data[0] || data;
+
+                var navFirstLvl = data.navigation;
+                var domEl = document.querySelectorAll(menuClass);
+                //in case there are multiple nav's please insert code here
+                if (domEl.length >= 2) return console.log("Please loop through domEL");
+
+                domEl = this.domEl = domEl[0];
+                domEl.innerHTML = "";
+
+                var templ = _.template(this.template);
+                var that = this;
+
+                navFirstLvl.forEach(function (nav) {
+                    console.log(nav);
+                    that.domEl.innerHTML += templ(nav);
+                });
+            }
         }]);
 
         return MenuView;

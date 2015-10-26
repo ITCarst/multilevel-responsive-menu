@@ -27,7 +27,7 @@ require(["app"], function (App) {
     var conf = {
         dataURI: "./dist/js/data/menu.data.json",
         config: {
-            domEl: ".menu_holder"
+            menuClass: ".menu_holder"
         }
     };
 

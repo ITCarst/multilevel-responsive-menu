@@ -5,10 +5,14 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
         menuClass: ".menu_holder"
     };
 
-    console.log(defaults);
-
     class MenuController {
 
+        /*
+         * Main Constructor
+         * @conf {object} - configuration sent by the dev
+         * @this.model {object} - the main model for data
+         * @this.view {object} - the view
+         */
         constructor (conf) {
             this.conf = conf;
             //init the model with the url to retrive the data later 
@@ -19,14 +23,21 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
             this.checksConf();
         }
 
+        /*
+         * Checks for configuration and validates them
+         * If all OK then fetch the data using the config
+         *
+         * @check {menuClass} - required class for nav rendering
+         * @check {dataURI} - check if user sent a giving uri to get data
+         */
         checksConf () {
             let menuClass, that = this;
             this.data = [];
 
             //check for the menu class where the menu is going to be rendered
             if ('config' in this.conf) {
-                if ('domEl' in this.conf.config) {
-                    menuClass = this.conf.config.domEl || defaults.menuClass;
+                if ('menuClass' in this.conf.config) {
+                    menuClass = this.conf.config.menuClass || defaults.menuClass;
                 }
             }
 
@@ -35,18 +46,28 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
             
             //load the data from the model
             that.loadData().then( (data) => {
+                //push the data into the parent scope
                 that.data.push(data); 
-                console.log(data);
+                //render the view with parent data
+                that.renderView();
             });
         }
 
+        /*
+         * Load's data from the model using the giving uri
+         * @return {object} - returns an object of data
+         */
         loadData () {
             return this.model.loadData(this.conf.dataURI);
         }
 
+        /*
+         * Renders the view tempalte withe data
+         * @return {null} - should render view
+         */
         renderView () {
             //render the view
-            return this.view.render(this.data);
+            return this.view.render(this.data, this.conf.config.menuClass);
         }
     }
 
