@@ -48,7 +48,6 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
             that.loadData().then( (data) => {
                 //push the data into the parent scope
                 that.data.push(data); 
-                //render the view with parent data
                 that.renderView();
             });
         }
@@ -66,8 +65,9 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
          * @return {null} - should render view
          */
         renderView () {
+            let that = (typeof this !== "undefined") ? this : {};
             //render the view
-            return this.view.render(this.data, this.conf.config.menuClass);
+            return that.view.render(that.data, that.conf.config.menuClass);
         }
     }
 

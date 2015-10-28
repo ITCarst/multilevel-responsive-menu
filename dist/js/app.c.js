@@ -61,7 +61,6 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
                 that.loadData().then(function (data) {
                     //push the data into the parent scope
                     that.data.push(data);
-                    //render the view with parent data
                     that.renderView();
                 });
             }
@@ -83,8 +82,9 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
         }, {
             key: "renderView",
             value: function renderView() {
+                var that = typeof this !== "undefined" ? this : {};
                 //render the view
-                return this.view.render(this.data, this.conf.config.menuClass);
+                return that.view.render(that.data, that.conf.config.menuClass);
             }
         }]);
 

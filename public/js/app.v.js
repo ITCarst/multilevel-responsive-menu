@@ -1,5 +1,5 @@
 define([
-    "lodash",
+    "underscore",
     "app.c", 
     "text!menuTmpl"
 ], function (_, MenuController, template) {
@@ -11,12 +11,14 @@ define([
         }        
 
         render (data, menuClass) {
-            if (data.length <= 0) return "Please provide data";
+            if (typeof data !== "undefined" && data.length <= 0) return "Please provide data";
 
             data = data[0] || data;
 
             let navFirstLvl = data.navigation;
+
             let domEl = document.querySelectorAll(menuClass);
+
             //in case there are multiple nav's please insert code here 
             if (domEl.length >= 2) return console.log("Please loop through domEL");
 
@@ -25,13 +27,20 @@ define([
 
             let templ = _.template(this.template);
             let that = this;
+            let parentUL = this.createEl("ul");
 
             navFirstLvl.forEach(nav => {
-                console.log(nav);
-                that.domEl.innerHTML += templ(nav);
+                parentUL.innerHTML += templ(nav);
             });
 
+            domEl.appendChild(parentUL);
 
+        }
+
+        createEl (el) {
+            let elem = document.createElement(el);
+            
+            return elem;   
         }
     }
 

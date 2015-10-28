@@ -1,1 +1,62 @@
-<li><%= title %></li>
+<% if (typeof subnav !== "undefined") { %>
+    <li>
+        <a href="<%= link %>"><%= title %></a>
+        
+        <ul class="subnav">
+
+            <% _.each(subnav, function (nav) { %>
+                <% if (typeof nav.title !== "undefined") { %>
+                <% if (typeof nav.subnav === "object") { %>
+                
+                     <li><a href="#"><%= nav.title %></a>
+
+                         <ul class="subnav_second">
+
+                            <% _.each(nav.subnav, function (secondNav) { %>
+                                
+                                <% if(typeof secondNav.subnav === "object") { %>
+                                    <li><a href="#"><%= secondNav.title %></a>
+                                        
+                                        <div class="columns">
+                                            <% _.each(secondNav.subnav, function (sNav) { %>
+                                                    <% if (sNav.sub_column.length >= 2) { %>
+                                                         <div class="column">
+                                                            <h2><%= sNav.sub_column.title %></h2>
+                                                            <ul>
+                                                                <% _.each( sNav.sub_column, function (column) { %>
+                                                                    <li><a href="<%= column.link %>"><%= column.title %></a></li>
+                                                                <% }) %>
+                                                            </ul>
+                                                         </div>
+                                                    <% } else {%>
+                                                         <div class="column col_txt">
+                                                             <div>
+                                                                <h3>- <%= sNav.sub_column.title %> -</h3>
+                                                                <div><%= sNav.sub_column,title %></div>
+                                                                <p><%= sNav.sub_column.descr %></p>
+                                                                <button><%= sNav.sub_column.button %></button>
+                                                             </div>
+                                                        </div>
+                                                    <% } %>
+                                            <% }); %>
+                                        </div>
+
+                                    </li>
+                                <% } else { %>
+                                    <li><a href="#"><%= secondNav.title %></a></li>
+
+                                <% } %>
+                            <% }); %>
+
+                         </ul>
+                     </li>
+                <% } else { %>
+                    <li><a href="#"><%= nav.title %></a></li>
+                <% } %> 
+                <% } %> 
+            <% }); %>
+        </ul>
+    </li>
+<% } else { %>
+    <li><a href="#"><%= title %></a></li>
+ <% } %>

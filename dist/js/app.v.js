@@ -4,7 +4,7 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-define(["lodash", "app.c", "text!menuTmpl"], function (_, MenuController, template) {
+define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, template) {
     var MenuView = (function () {
         function MenuView() {
             _classCallCheck(this, MenuView);
@@ -15,12 +15,14 @@ define(["lodash", "app.c", "text!menuTmpl"], function (_, MenuController, templa
         _createClass(MenuView, [{
             key: "render",
             value: function render(data, menuClass) {
-                if (data.length <= 0) return "Please provide data";
+                if (typeof data !== "undefined" && data.length <= 0) return "Please provide data";
 
                 data = data[0] || data;
 
                 var navFirstLvl = data.navigation;
+
                 var domEl = document.querySelectorAll(menuClass);
+
                 //in case there are multiple nav's please insert code here
                 if (domEl.length >= 2) return console.log("Please loop through domEL");
 
@@ -29,11 +31,20 @@ define(["lodash", "app.c", "text!menuTmpl"], function (_, MenuController, templa
 
                 var templ = _.template(this.template);
                 var that = this;
+                var parentUL = this.createEl("ul");
 
                 navFirstLvl.forEach(function (nav) {
-                    console.log(nav);
-                    that.domEl.innerHTML += templ(nav);
+                    parentUL.innerHTML += templ(nav);
                 });
+
+                domEl.appendChild(parentUL);
+            }
+        }, {
+            key: "createEl",
+            value: function createEl(el) {
+                var elem = document.createElement(el);
+
+                return elem;
             }
         }]);
 

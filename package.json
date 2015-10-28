@@ -28,12 +28,13 @@
     "gulp-shell": "~0.4.3",
     "gulp-uglify": "~1.4.0",
     "karma": "latest",
-    "karma-firefox-launcher": "latest",
     "karma-babel-preprocessor": "^5.2.2",
+    "karma-firefox-launcher": "latest",
     "karma-jasmine": "^0.3.6",
     "karma-requirejs": "latest",
     "karma-sinon": "latest",
-    "requirejs": "~2.1.20"
+    "requirejs": "~2.1.20",
+    "underscore": "^1.8.3"
   },
   "license": "MIT",
   "bugs": {
@@ -41,8 +42,8 @@
   },
   "homepage": "https://github.com/IonutC/multilevel-responsive-menu",
   "dependencies": {
-    "lodash": "^3.10.1",
-    "requirejs-plugins": "^1.0.2"
+    "requirejs-plugins": "^1.0.2",
+    "underscore": "^1.8.3"
   },
   "keywords": [
     "multilevel-responsive-menu",

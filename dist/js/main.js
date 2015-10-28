@@ -4,7 +4,7 @@ require.config({
     paths: {
         text: "../../node_modules/requirejs-plugins/lib/text",
         json: '../../node_modules/requirejs-plugins/src/json',
-        lodash: "../../node_modules/lodash/index",
+        underscore: "../../node_modules/underscore/underscore-min",
         menuData: "public/js/data/menu.data.json",
         menuTmpl: "templates/menu.html"
     }

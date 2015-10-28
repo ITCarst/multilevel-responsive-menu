@@ -291,8 +291,7 @@ Main Container ===============================
     .container .menu_holder .subnav {
       position: absolute;
       right: 0;
-      padding: 0;
-      display: none; }
+      padding: 0; }
       .container .menu_holder .subnav li {
         float: none;
         display: inline-block; }
@@ -308,6 +307,7 @@ Main Container ===============================
     .container .menu_holder .columns {
       position: absolute;
       left: 0;
+      width: 100%;
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -408,18 +408,13 @@ Main Container ===============================
           margin: 0 auto;
           width: 32%;
           text-align: center; }
-      .container .menu_holder ul.subnav {
-        display: none; }
-        .container .menu_holder ul.subnav li {
-          display: block;
-          text-align: left;
-          width: 100%; }
-          .container .menu_holder ul.subnav li:last-child {
-            float: none; }
-      .container .menu_holder ul.subnav_second {
-        display: none; }
+      .container .menu_holder ul.subnav li {
+        display: block;
+        text-align: left;
+        width: 100%; }
+        .container .menu_holder ul.subnav li:last-child {
+          float: none; }
       .container .menu_holder .columns {
-        display: none;
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column; }

@@ -18,7 +18,7 @@ require.config({
     paths: {
         "text": "node_modules/requirejs-plugins/lib/text",
         "json" : "node_modules/requirejs-plugins/src/json",
-        "lodash" : "node_modules/lodash/index",
+        "underscore" : "node_modules/underscore/underscore-min",
 
         "app": "public/js/app",
         "app.c" : "public/js/app.c",
