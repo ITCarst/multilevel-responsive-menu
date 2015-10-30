@@ -25,7 +25,7 @@ require(["app"], function (App) {
     //default
     //push-right, fixed
     var conf = {
-        dataURI: "./dist/js/data/menu.data.json",
+        dataURI: "dist/js/data/menu.data.json",
         config: {
             menuClass: ".menu_holder"
         }

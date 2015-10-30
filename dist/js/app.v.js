@@ -20,7 +20,6 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                 data = data[0] || data;
 
                 var navFirstLvl = data.navigation;
-
                 var domEl = document.querySelectorAll(menuClass);
 
                 //in case there are multiple nav's please insert code here
@@ -30,14 +29,14 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                 domEl.innerHTML = "";
 
                 var templ = _.template(this.template);
-                var that = this;
                 var parentUL = this.createEl("ul");
 
                 navFirstLvl.forEach(function (nav) {
                     parentUL.innerHTML += templ(nav);
                 });
-
                 domEl.appendChild(parentUL);
+
+                this.setEvent(domEl);
             }
         }, {
             key: "createEl",
@@ -45,6 +44,24 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                 var elem = document.createElement(el);
 
                 return elem;
+            }
+        }, {
+            key: "setEvent",
+            value: function setEvent(el) {
+
+                var nav = el.children[0];
+
+                var navList = nav.children;
+
+                var items = Array.from(navList);
+
+                items.forEach(function (item, x) {
+
+                    console.log(item.children.length);
+
+                    //if (item.children[x].className === "subnav")
+                    //  console.log(item.children)
+                });
             }
         }]);
 

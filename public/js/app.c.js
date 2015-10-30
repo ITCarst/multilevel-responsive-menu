@@ -1,7 +1,7 @@
 define(["app.m", "app.v"], function (MenuModel, MenuView) {
 
     const defaults = {
-        dataURI: "./dist/js/data/menu.data.json",
+        dataURI: "data/menu.data.json",
         menuClass: ".menu_holder"
     };
 

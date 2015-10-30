@@ -16,7 +16,6 @@ define([
             data = data[0] || data;
 
             let navFirstLvl = data.navigation;
-
             let domEl = document.querySelectorAll(menuClass);
 
             //in case there are multiple nav's please insert code here 
@@ -26,14 +25,14 @@ define([
             domEl.innerHTML = "";
 
             let templ = _.template(this.template);
-            let that = this;
             let parentUL = this.createEl("ul");
 
             navFirstLvl.forEach(nav => {
                 parentUL.innerHTML += templ(nav);
             });
-
             domEl.appendChild(parentUL);
+
+            this.setEvent(domEl);
 
         }
 
@@ -41,6 +40,24 @@ define([
             let elem = document.createElement(el);
             
             return elem;   
+        }
+
+        setEvent (el) {
+
+            let nav = el.children[0];
+
+            let navList = nav.children;
+
+            let items = Array.from(navList);
+
+
+            items.forEach( (item, x) => {
+
+                console.log(item.children.length)
+
+                //if (item.children[x].className === "subnav")
+                  //  console.log(item.children)
+            });
         }
     }
 

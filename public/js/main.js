@@ -23,7 +23,7 @@ require(["app"], function (App) {
 
     //default
     let conf = {
-        dataURI: "./dist/js/data/menu.data.json",
+        dataURI: "dist/js/data/menu.data.json",
         config: {
             menuClass: ".menu_holder"
         }

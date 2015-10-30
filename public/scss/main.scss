@@ -90,7 +90,7 @@ Main Container ===============================
             position: absolute;
             right: 0;
             padding: 0;
-            //display: none;
+            display: none;
 
             li {
                 float: none;
@@ -100,6 +100,9 @@ Main Container ===============================
                     float: right;
                 }
             }
+        }
+        .active .subnav {
+            display: block;
         }
 
         /*
@@ -306,7 +309,7 @@ Main Container ===============================
             }
 
             ul.subnav {
-               //display: none;
+               display: none;
 
                 li {
                    display: block;
@@ -321,11 +324,11 @@ Main Container ===============================
             }
 
             ul.subnav_second {
-                //display: none;
+                display: none;
             }
 
             .columns {
-                //display: none;
+                display: none;
                 @include flexdirection(column);
             }
         }
