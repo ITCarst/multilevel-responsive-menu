@@ -1,5 +1,8 @@
 define(["app.m", "app.v"], function (MenuModel, MenuView) {
 
+    /*
+     * default conf if user doens't send any
+    */
     const defaults = {
         dataURI: "data/menu.data.json",
         menuClass: ".menu_holder"
