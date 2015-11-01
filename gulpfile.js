@@ -52,7 +52,8 @@ gulp.task("copy-data", function () {
 gulp.task("testOnce", function (done) {
     karma.start({
         configFile: __dirname + "/karma.conf.js",
-        singleRun: true
+        singleRun: true,
+        browsers: ["Firefox"]
     }, function (exitCode) {
         done(exitCode ? "There are failing tests" : undefined);
     });

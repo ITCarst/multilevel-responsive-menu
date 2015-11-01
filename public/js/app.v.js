@@ -104,23 +104,24 @@ define([
         firstLvlEvent (firstLvl, ev) {
             let that = this,
                 target = ev.target;
-   
+
             if (firstLvl.children.length) {
                 let firstLvlC = this.arrFromObj(firstLvl.children);
 
-                if (firstLvl.className !== "active" || 
-                        firstLvl.className === "" ) {
-                    firstLvl.className = "active";
-                } else if (firstLvl.className === "active") {
-                    firstLvl.className = "";
-                }
-
                 //set active class to the clicked element 
                 firstLvlC.forEach( flc => {
+                    //set active || "" to the first level menu 
+                    //show hide the subnav
+                    if (target === flc) {
+                        let firstLvlClass = firstLvl.className;
+                        (firstLvlClass === "") ? firstLvlClass = "active" : firstLvlClass = "";
+                        firstLvl.className = firstLvlClass;
+                    }
+
                     if (flc.className !== "" && flc.className === "subnav") {
+                        console.log("subnav", flc.children)
                     }
                 });
-
             }
         }
 

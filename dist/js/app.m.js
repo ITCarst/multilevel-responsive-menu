@@ -6,9 +6,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 define(function () {
     var MenuModel = (function () {
+
+        /*
+         * Main Model Constructor
+         */
+
         function MenuModel() {
             _classCallCheck(this, MenuModel);
         }
+
+        /*
+         * Load's data with a required URI static || sent by user
+         * @param {dataURI} - the URI wich the data will be loaded
+         * @return {JSON object} - returns JSON oject
+         */
 
         _createClass(MenuModel, [{
             key: "loadData",
@@ -17,6 +28,13 @@ define(function () {
 
                 return this.get(dataURI).then(JSON.parse);
             }
+
+            /*
+             * AJAX call require's an URI and get's the result
+             * using response and reject promises
+             * @param {url} - URI where the ajax will do call
+             * @return {new promise} - return's a prmoise which can be used later
+             */
         }, {
             key: "get",
             value: function get(url) {

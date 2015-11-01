@@ -12,6 +12,7 @@ require.config({
 
 require(["app"], function (App) {
 
+    //conf with multiple options to do   
     var menuConf = {
         data: "data/menu.data.json",
         config: {

@@ -301,7 +301,7 @@ Main Container ===============================
     .container .menu_holder .active .subnav {
       display: block; }
     .container .menu_holder ul.subnav_second {
-      display: block;
+      display: none;
       width: 100%;
       position: absolute;
       left: 0; }

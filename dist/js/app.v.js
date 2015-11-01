@@ -120,15 +120,19 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                 if (firstLvl.children.length) {
                     var firstLvlC = this.arrFromObj(firstLvl.children);
 
-                    if (firstLvl.className !== "active" || firstLvl.className === "") {
-                        firstLvl.className = "active";
-                    } else if (firstLvl.className === "active") {
-                        firstLvl.className = "";
-                    }
-
                     //set active class to the clicked element
                     firstLvlC.forEach(function (flc) {
-                        if (flc.className !== "" && flc.className === "subnav") {}
+                        //set active || "" to the first level menu
+                        //show hide the subnav
+                        if (target === flc) {
+                            var firstLvlClass = firstLvl.className;
+                            firstLvlClass === "" ? firstLvlClass = "active" : firstLvlClass = "";
+                            firstLvl.className = firstLvlClass;
+                        }
+
+                        if (flc.className !== "" && flc.className === "subnav") {
+                            console.log("subnav", flc.children);
+                        }
                     });
                 }
             }
