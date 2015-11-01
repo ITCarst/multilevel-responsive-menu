@@ -130,9 +130,7 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                             firstLvl.className = firstLvlClass;
                         }
 
-                        if (flc.className !== "" && flc.className === "subnav") {
-                            console.log("subnav", flc.children);
-                        }
+                        if (flc.className !== "" && flc.className === "subnav") {}
                     });
                 }
             }
@@ -146,8 +144,8 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
             key: "arrFromObj",
             value: function arrFromObj(obj) {
                 var arr = [];
-                Array.from(obj).forEach(function (nav) {
-                    arr.push(nav);
+                Object.keys(obj).forEach(function (key) {
+                    return arr.push(obj[key]);
                 });
                 return arr;
             }

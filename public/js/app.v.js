@@ -119,7 +119,6 @@ define([
                     }
 
                     if (flc.className !== "" && flc.className === "subnav") {
-                        console.log("subnav", flc.children)
                     }
                 });
             }
@@ -132,7 +131,7 @@ define([
          */
         arrFromObj (obj) {
             let arr = [];
-            Array.from(obj).forEach( nav => { arr.push(nav) });
+            Object.keys(obj).forEach( key => arr.push(obj[key]));
             return arr;
         };
     }
