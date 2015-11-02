@@ -91,7 +91,6 @@ define([
                 firstLvl.addEventListener("click", function (ev) {
                     that.firstLvlEvent(firstLvl, ev);
                 }, false);
-
             });
         }
 
@@ -110,18 +109,58 @@ define([
 
                 //set active class to the clicked element 
                 firstLvlC.forEach( flc => {
-                    //set active || "" to the first level menu 
                     //show hide the subnav
-                    if (target === flc) {
-                        let firstLvlClass = firstLvl.className;
-                        (firstLvlClass === "") ? firstLvlClass = "active" : firstLvlClass = "";
-                        firstLvl.className = firstLvlClass;
-                    }
-
+                    if (target === flc) that.setStateClass(firstLvl, "active");
+                    //check for subnav class and check for children
                     if (flc.className !== "" && flc.className === "subnav") {
+                        that.secondLvlEvent(flc, ev);
                     }
                 });
             }
+        }
+
+        secondLvlEvent (subnav, ev) {
+            let subnavC = subnav.children, that = this,
+                target = ev.target;
+            subnavC = this.arrFromObj(subnavC);
+
+            //subnav elements Ladies/Men etc.
+            subnavC.forEach( sc => {
+                //has subnav
+                if (sc.children.length > 1) {
+                    let subnavChild = that.arrFromObj(sc.children);
+
+                    subnavChild.forEach( subnavC => {
+                        if (target === subnavC) that.setStateClass(subnavC.parentNode, "active");
+                        //second subnav
+                        if (subnavC.className !== "" && subnavC.className === "subnav_second" ) {
+                            that.thirdLvlEvent(subnavC, ev); 
+                        }
+                    });
+                }
+            });
+        }
+
+        thirdLvlEvent (secondSubnav, ev) {
+            let children = this.arrFromObj(secondSubnav.children),
+                that = this, target = ev.target;
+
+            children.forEach( tc => {
+                if (tc.children.length > 1) {
+                    let columnsParent = that.arrFromObj(tc.children);
+
+                    columnsParent.forEach( columns => {
+                        if (target === columns) that.setStateClass(columns.parentNode, "active");
+                    });
+                }
+            });
+        }
+
+        setStateClass (el, stateClass) {
+            //set active || ""
+            let elClass = el.className;
+            (elClass === "") ? elClass = stateClass : elClass = "";
+            el.className = elClass;
         }
 
         /* 

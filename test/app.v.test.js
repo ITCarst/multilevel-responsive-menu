@@ -122,6 +122,43 @@ define(["app.v", "json!menuData"], function (MenuView, data) {
                 expect(this.view.arrFromObj).toBeDefined();
             });
         });
+
+        describe("#firstLvlEvent", function () {
+            it("should be defined", function () {
+                expect(this.view.firstLvlEvent).toBeDefined();
+            });
+        });
+
+        describe("#secondLvlEvent", function () {
+            it("should be defined", function () {
+                expect(this.view.secondLvlEvent).toBeDefined();
+            });
+        });
+
+        describe("#thirdLvlEvent", function () {
+            it("should be defined", function () {
+                expect(this.view.thirdLvlEvent).toBeDefined();
+            });
+        });
+
+        describe("#setStateClass", function () {
+            it("should be defined", function () {
+                expect(this.view.setStateClass).toBeDefined();
+            });
+
+            it("should add a class to the element", function () {
+                let el = this.view.createEl("div");
+                this.view.setStateClass(el, "active");
+                expect(el.className).toEqual("active");
+            });
+
+            it("should remove a class from the element", function () {
+                let el = this.view.createEl("div");
+                el.className = "active";
+                this.view.setStateClass(el, "");
+                expect(el.className).toEqual("");
+            });
+        });
     });
 });
 

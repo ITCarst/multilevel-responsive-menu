@@ -307,18 +307,12 @@ Main Container ===============================
       left: 0; }
       .container .menu_holder ul.subnav_second li:last-child {
         float: none; }
+    .container .menu_holder .subnav .active .subnav_second {
+      display: block; }
     .container .menu_holder .columns {
       position: absolute;
       left: 0;
       width: 100%;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: -webkit-flexbox;
-      display: flex;
       -webkit-box-flex: 100%;
       -moz-box-flex: 100%;
       -webkit-flex: 100%;
@@ -329,7 +323,8 @@ Main Container ===============================
       flex-direction: row;
       flex-wrap: nowrap;
       -webkit-flex-wrap: nowrap;
-      padding: 1em; }
+      padding: 1em;
+      display: none; }
       .container .menu_holder .columns .column {
         margin-right: 1em;
         flex-basis: 15%;
@@ -354,6 +349,16 @@ Main Container ===============================
           display: flex;
           align-items: center;
           -webkit-flex-basis: 20%; }
+    .container .menu_holder .subnav_second .active .columns {
+      display: block;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: -webkit-flexbox;
+      display: flex; }
   @media only screen and (min-width: 1024px) {
     .container {
       max-width: 95%; } }
@@ -391,7 +396,7 @@ Main Container ===============================
       background: red !important;
       max-width: 100%; }
       .container .menu_holder ul.subnav_second {
-        display: flex;
+        display: none;
         font-size: .9em; }
       .container .menu_holder div.columns .column.col_txt {
         display: none; } }

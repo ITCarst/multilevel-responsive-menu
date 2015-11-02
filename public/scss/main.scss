@@ -101,6 +101,7 @@ Main Container ===============================
                 }
             }
         }
+        //show subnav
         .active .subnav {
             display: block;
         }
@@ -121,7 +122,14 @@ Main Container ===============================
                 &:last-child {
                     float: none;
                 }
-
+            }
+        }
+        //show second subnav
+        .subnav {
+            .active {
+                .subnav_second {
+                    display: block;
+                }
             }
         }
         /*
@@ -134,12 +142,13 @@ Main Container ===============================
             left: 0;
             width: 100%;
                 
-            @include flexbox();
             @include flex(100%);
             @include flexdirection(row);
             @include flexWrap(nowrap);
             padding: 1em;
 
+
+            display: none;
 
             .column {
                 margin-right: 1em;
@@ -172,6 +181,16 @@ Main Container ===============================
                 }
 
             }
+        }
+
+        //show the columns 
+        .subnav_second {
+            .active {
+                .columns {
+                    display: block;
+                    @include flexbox();
+                }
+            }   
         }
     }
 
@@ -260,14 +279,12 @@ Main Container ===============================
 
         .menu_holder { 
             ul.subnav_second {
-                display: flex;
+                display: none;
                 font-size: .9em;
             }
 
             div.columns {
-                
                 .column {
-
                     &.col_txt {
                         display: none;
                     }

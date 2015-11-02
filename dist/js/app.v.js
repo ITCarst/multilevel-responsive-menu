@@ -122,17 +122,63 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
 
                     //set active class to the clicked element
                     firstLvlC.forEach(function (flc) {
-                        //set active || "" to the first level menu
                         //show hide the subnav
-                        if (target === flc) {
-                            var firstLvlClass = firstLvl.className;
-                            firstLvlClass === "" ? firstLvlClass = "active" : firstLvlClass = "";
-                            firstLvl.className = firstLvlClass;
+                        if (target === flc) that.setStateClass(firstLvl, "active");
+                        //check for subnav class and check for children
+                        if (flc.className !== "" && flc.className === "subnav") {
+                            that.secondLvlEvent(flc, ev);
                         }
-
-                        if (flc.className !== "" && flc.className === "subnav") {}
                     });
                 }
+            }
+        }, {
+            key: "secondLvlEvent",
+            value: function secondLvlEvent(subnav, ev) {
+                var subnavC = subnav.children,
+                    that = this,
+                    target = ev.target;
+                subnavC = this.arrFromObj(subnavC);
+
+                //subnav elements Ladies/Men etc.
+                subnavC.forEach(function (sc) {
+                    //has subnav
+                    if (sc.children.length > 1) {
+                        var subnavChild = that.arrFromObj(sc.children);
+
+                        subnavChild.forEach(function (subnavC) {
+                            if (target === subnavC) that.setStateClass(subnavC.parentNode, "active");
+                            //second subnav
+                            if (subnavC.className !== "" && subnavC.className === "subnav_second") {
+                                that.thirdLvlEvent(subnavC, ev);
+                            }
+                        });
+                    }
+                });
+            }
+        }, {
+            key: "thirdLvlEvent",
+            value: function thirdLvlEvent(secondSubnav, ev) {
+                var children = this.arrFromObj(secondSubnav.children),
+                    that = this,
+                    target = ev.target;
+
+                children.forEach(function (tc) {
+                    if (tc.children.length > 1) {
+                        var columnsParent = that.arrFromObj(tc.children);
+
+                        columnsParent.forEach(function (columns) {
+                            if (target === columns) that.setStateClass(columns.parentNode, "active");
+                        });
+                    }
+                });
+            }
+        }, {
+            key: "setStateClass",
+            value: function setStateClass(el, stateClass) {
+                //set active || ""
+                var elClass = el.className;
+                elClass === "" ? elClass = stateClass : elClass = "";
+                el.className = elClass;
             }
 
             /* 
