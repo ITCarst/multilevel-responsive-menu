@@ -111,33 +111,21 @@ define(["app.v", "json!menuData"], function (MenuView, data) {
             });
         });
 
-        describe("#firstLvlEvnt", function () {
-            it("should be defined", function () {
-                expect(this.view.firstLvlEvent).toBeDefined();
-            })
-        });
-
         describe("#arrFromObj", function () {
             it("should be defined", function () {
                 expect(this.view.arrFromObj).toBeDefined();
             });
         });
 
-        describe("#firstLvlEvent", function () {
+        describe("#captureSubmenuEvents", function () {
             it("should be defined", function () {
-                expect(this.view.firstLvlEvent).toBeDefined();
+                expect(this.view.captureSubmenuEvents).toBeDefined();
             });
         });
 
-        describe("#secondLvlEvent", function () {
+        describe("#setNavState", function () {
             it("should be defined", function () {
-                expect(this.view.secondLvlEvent).toBeDefined();
-            });
-        });
-
-        describe("#thirdLvlEvent", function () {
-            it("should be defined", function () {
-                expect(this.view.thirdLvlEvent).toBeDefined();
+                expect(this.view.setNavState).toBeDefined();
             });
         });
 

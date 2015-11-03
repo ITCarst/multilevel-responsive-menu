@@ -84,6 +84,7 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                 var firstLvlP = el.children; //first level parent
                 var firstLvlC = firstLvlP[0].children; //first level children
 
+                //set events on the submenus if childrens are present
                 this.menuTree(firstLvlC);
             }
 
@@ -95,106 +96,52 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
             key: "menuTree",
             value: function menuTree(firstLvlC) {
                 var that = this;
-
+                //return array from object
                 firstLvlC = this.arrFromObj(firstLvlC);
-
+                //loop through the array and add click event
                 firstLvlC.forEach(function (firstLvl) {
                     firstLvl.addEventListener("click", function (ev) {
-                        that.firstLvlEvent(firstLvl, ev);
+                        //if has child build the event click for the submenus also
+                        if (firstLvl.children.length > 1) that.setNavState(firstLvl, ev);
                     }, false);
                 });
             }
 
-            /* 
-             * Set's click || touch event on the menu items if has children
-             * Adds class active || "" so it show's hide the children
-             * @parma {firstLvl} - the children of the firstLvlC e.g. Shop, SignIn etc.
-             * @ev {event} - the click event on the parent
+            /*
+             * On click show/hide the child/parent submenus
+             * @param {navParent} - DOM element that has children
+             * @param {ev} - click event
              */
-        }, {
-            key: "firstLvlEvent",
-            value: function firstLvlEvent(firstLvl, ev) {
-                var that = this,
-                    target = ev.target;
-
-                if (firstLvl.children.length) {
-                    var firstLvlC = this.arrFromObj(firstLvl.children);
-                    //set active class to the clicked element
-                    firstLvlC.forEach(function (flc) {
-                        //show hide the subnav
-                        if (target === flc) that.toggleClassName(firstLvl, "active");
-                        //check for subnav class and check for children
-                        if (flc.className !== "" && flc.className === "subnav") {
-                            that.secondLvlEvent(flc, ev);
-                        }
-                    });
-                }
-            }
-        }, {
-            key: "secondLvlEvent",
-            value: function secondLvlEvent(subnav, ev) {
-                var subnavC = this.arrFromObj(subnav.children),
-                    that = this,
-                    target = ev.target;
-
-                //subnav elements Ladies/Men etc.
-                subnavC.forEach(function (sc) {
-                    //has subnav
-                    if (sc.children.length > 1) {
-                        var subnavChild = that.arrFromObj(sc.children);
-
-                        subnavChild.forEach(function (subnavC) {
-                            if (target === subnavC) that.toggleClassName(subnavC.parentNode, "active");
-                            //second subnav
-                            if (subnavC.className !== "" && subnavC.className === "subnav_second") {
-                                console.log("here");
-                                that.thirdLvlEvent(subnavC, ev);
-                            }
-                        });
-                    }
-                });
-            }
         }, {
             key: "captureSubmenuEvents",
             value: function captureSubmenuEvents(navParent, ev) {
-                var that = this;
-                var navC = this.arrFromObj(navParent.children);
-                var target = ev.target;
+                var that = this,
+                    navC = this.arrFromObj(navParent.children);
 
+                //the children of nav
                 navC.forEach(function (child) {
-
-                    //child becomes parent
-                    if (child.children.length > 1) {
-
-                        var childToParent = that.arrFromObj(child.children);
-
-                        childToParent.forEach(function (child) {
-
-                            if (target === child) {
-                                that.toggleClassName(child.parentNode, "active");
-                                console.log("call again");
-                            }
-                        });
-                    }
+                    //child becomes parent and calls active states
+                    if (child.children.length > 1) that.setNavState(child, ev);
                 });
             }
+
+            /*
+             * Set's active || "" to the clicked element
+             * @param {parent} - DOM element object
+             * @param {ev} - click event
+             */
         }, {
-            key: "thirdLvlEvent",
-            value: function thirdLvlEvent(secondSubnav, ev) {
-                var children = this.arrFromObj(secondSubnav.children),
-                    that = this,
+            key: "setNavState",
+            value: function setNavState(parent, ev) {
+                var that = this,
+                    navChildren = that.arrFromObj(parent.children),
                     target = ev.target;
 
-                children.forEach(function (tc) {
-
-                    if (tc.children.length > 1) {
-
-                        var columnsParent = that.arrFromObj(tc.children);
-
-                        columnsParent.forEach(function (columns) {
-                            if (target === columns) that.toggleClassName(columns.parentNode, "active");
-                        });
-                    }
+                navChildren.forEach(function (child) {
+                    //set active class or remove it
+                    if (target === child) that.toggleClassName(child.parentNode, "active");
+                    //if has class recall the parent function with the new object
+                    if (child.className !== "") that.captureSubmenuEvents(child, ev);
                 });
             }
 
