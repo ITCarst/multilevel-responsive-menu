@@ -417,7 +417,8 @@ Main Container ===============================
           width: 32%;
           text-align: center; }
       .container .menu_holder ul.subnav {
-        display: none; }
+        display: none;
+        position: relative; }
         .container .menu_holder ul.subnav li {
           display: block;
           text-align: left;
@@ -425,12 +426,14 @@ Main Container ===============================
           .container .menu_holder ul.subnav li:last-child {
             float: none; }
       .container .menu_holder ul.subnav_second {
-        display: none; }
+        display: none;
+        position: relative; }
       .container .menu_holder .columns {
         display: none;
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
-        flex-direction: column; }
+        flex-direction: column;
+        position: relative; }
       .container .nav_mob {
         display: block;
         position: absolute;

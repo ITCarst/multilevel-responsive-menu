@@ -141,21 +141,21 @@ define(["app.v", "json!menuData"], function (MenuView, data) {
             });
         });
 
-        describe("#setStateClass", function () {
+        describe("#toggleClassName", function () {
             it("should be defined", function () {
-                expect(this.view.setStateClass).toBeDefined();
+                expect(this.view.toggleClassName).toBeDefined();
             });
 
             it("should add a class to the element", function () {
                 let el = this.view.createEl("div");
-                this.view.setStateClass(el, "active");
+                this.view.toggleClassName(el, "active");
                 expect(el.className).toEqual("active");
             });
 
             it("should remove a class from the element", function () {
                 let el = this.view.createEl("div");
                 el.className = "active";
-                this.view.setStateClass(el, "");
+                this.view.toggleClassName(el, "");
                 expect(el.className).toEqual("");
             });
         });

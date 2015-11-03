@@ -26,7 +26,7 @@ require.config({
         "app.m" : "public/js/app.m",
 
         "menuData": "public/js/data/menu.data.json",
-        "menuTmpl" : "public/js/templates/menu.html"
+        "menuTmpl" : "public/js/tmpl/menu.html"
     },
     // dynamically load all test files
     deps: allTestFiles,

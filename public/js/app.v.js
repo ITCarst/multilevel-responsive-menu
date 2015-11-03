@@ -106,11 +106,10 @@ define([
 
             if (firstLvl.children.length) {
                 let firstLvlC = this.arrFromObj(firstLvl.children);
-
                 //set active class to the clicked element 
                 firstLvlC.forEach( flc => {
                     //show hide the subnav
-                    if (target === flc) that.setStateClass(firstLvl, "active");
+                    if (target === flc) that.toggleClassName(firstLvl, "active");
                     //check for subnav class and check for children
                     if (flc.className !== "" && flc.className === "subnav") {
                         that.secondLvlEvent(flc, ev);
@@ -120,9 +119,9 @@ define([
         }
 
         secondLvlEvent (subnav, ev) {
-            let subnavC = subnav.children, that = this,
+            let subnavC = this.arrFromObj(subnav.children),
+                that = this,
                 target = ev.target;
-            subnavC = this.arrFromObj(subnavC);
 
             //subnav elements Ladies/Men etc.
             subnavC.forEach( sc => {
@@ -131,9 +130,10 @@ define([
                     let subnavChild = that.arrFromObj(sc.children);
 
                     subnavChild.forEach( subnavC => {
-                        if (target === subnavC) that.setStateClass(subnavC.parentNode, "active");
+                        if (target === subnavC) that.toggleClassName(subnavC.parentNode, "active");
                         //second subnav
                         if (subnavC.className !== "" && subnavC.className === "subnav_second" ) {
+                            console.log("here");
                             that.thirdLvlEvent(subnavC, ev); 
                         }
                     });
@@ -141,22 +141,53 @@ define([
             });
         }
 
-        thirdLvlEvent (secondSubnav, ev) {
-            let children = this.arrFromObj(secondSubnav.children),
-                that = this, target = ev.target;
+        captureSubmenuEvents (navParent, ev) {
+            let that = this;
+            let navC = this.arrFromObj(navParent.children);
+            let target = ev.target;
 
-            children.forEach( tc => {
-                if (tc.children.length > 1) {
-                    let columnsParent = that.arrFromObj(tc.children);
+            navC.forEach( child => {
 
-                    columnsParent.forEach( columns => {
-                        if (target === columns) that.setStateClass(columns.parentNode, "active");
+                //child becomes parent
+                if (child.children.length > 1) {
+
+                    let childToParent = that.arrFromObj(child.children);
+
+                    childToParent.forEach( child => {
+
+                        if (target === child) {
+                            that.toggleClassName(child.parentNode, "active");
+                            console.log("call again")
+                        }
                     });
                 }
             });
         }
 
-        setStateClass (el, stateClass) {
+
+        thirdLvlEvent (secondSubnav, ev) {
+            let children = this.arrFromObj(secondSubnav.children),
+                that = this, target = ev.target;
+
+            children.forEach( tc => {
+
+                if (tc.children.length > 1) {
+
+                    let columnsParent = that.arrFromObj(tc.children);
+
+                    columnsParent.forEach( columns => {
+                        if (target === columns) that.toggleClassName(columns.parentNode, "active");
+                    });
+                }
+            });
+        }
+
+        /*
+         * Set's stateClass as className to element or leave's it empty
+         * @param {el} - DOM element
+         * @parma {stateClas} - string, class name
+         */
+        toggleClassName (el, stateClass) {
             //set active || ""
             let elClass = el.className;
             (elClass === "") ? elClass = stateClass : elClass = "";

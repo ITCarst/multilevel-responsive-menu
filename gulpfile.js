@@ -2,6 +2,7 @@ var gulp = require("gulp"),
     rename = require("gulp-rename"),
     livereload = require("gulp-livereload"),
     uglify = require("gulp-uglify"),
+    merge = require("merge-stream"),
     notify = require("gulp-notify");
 
 //JS 
@@ -38,7 +39,7 @@ gulp.task("lint-test", function () {
 
 
 gulp.task("babel", function () {
-    return gulp.src(["public/js/**/*.js", "public/js/tempaltes/*", "test/**/*.js"])
+    return gulp.src(["public/js/**/*.js"])
         .pipe(babel())
         .pipe(gulp.dest("dist/js/"));
 });
@@ -95,9 +96,9 @@ gulp.task("sass", function () {
 });
 
 
-gulp.task("copy-templates", function () {
-    return gulp.src("public/js/templates/*")
-        .pipe(gulp.dest("dist/js/templates"))
+gulp.task("copy-tmpl", function () {
+    return gulp.src("public/js/tmpl/*")
+        .pipe(gulp.dest("dist/js/tmpl"))
 });
 
 //Clean
@@ -106,7 +107,7 @@ gulp.task("clean", function () {
 });
 
 gulp.task("default", function () {
-    gulp.start("copy-data", "babel", "sass", "testOnce");
+    gulp.start("copy-data", "babel", "sass", "copy-tmpl", "testOnce");
     //gulp.start("lint-client", "lint-test", "testOnce");
     //gulp.start("test_r", "build");
 });
@@ -120,7 +121,7 @@ gulp.task("watch", function () {
     gulp.watch("public/scss/*.scss", ["sass"]);
     gulp.watch("public/js/**/*.js", ["babel"]);
     gulp.watch("public/js/data/*", ["copy-data"]);
-    gulp.watch("public/js/templates/*.html", ["copy-templates"]);
+    gulp.watch("public/js/tmpl/*.html", ["copy-tmpl"]);
     gulp.watch("test/**/*.test.js", ["test"]);
     //create livereaload
     livereload.listen();

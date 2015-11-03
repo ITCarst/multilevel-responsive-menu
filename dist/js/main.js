@@ -6,7 +6,7 @@ require.config({
         json: '../../node_modules/requirejs-plugins/src/json',
         underscore: "../../node_modules/underscore/underscore-min",
         menuData: "public/js/data/menu.data.json",
-        menuTmpl: "templates/menu.html"
+        menuTmpl: "tmpl/menu.html"
     }
 });
 

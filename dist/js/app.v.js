@@ -119,11 +119,10 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
 
                 if (firstLvl.children.length) {
                     var firstLvlC = this.arrFromObj(firstLvl.children);
-
                     //set active class to the clicked element
                     firstLvlC.forEach(function (flc) {
                         //show hide the subnav
-                        if (target === flc) that.setStateClass(firstLvl, "active");
+                        if (target === flc) that.toggleClassName(firstLvl, "active");
                         //check for subnav class and check for children
                         if (flc.className !== "" && flc.className === "subnav") {
                             that.secondLvlEvent(flc, ev);
@@ -134,10 +133,9 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
         }, {
             key: "secondLvlEvent",
             value: function secondLvlEvent(subnav, ev) {
-                var subnavC = subnav.children,
+                var subnavC = this.arrFromObj(subnav.children),
                     that = this,
                     target = ev.target;
-                subnavC = this.arrFromObj(subnavC);
 
                 //subnav elements Ladies/Men etc.
                 subnavC.forEach(function (sc) {
@@ -146,10 +144,35 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                         var subnavChild = that.arrFromObj(sc.children);
 
                         subnavChild.forEach(function (subnavC) {
-                            if (target === subnavC) that.setStateClass(subnavC.parentNode, "active");
+                            if (target === subnavC) that.toggleClassName(subnavC.parentNode, "active");
                             //second subnav
                             if (subnavC.className !== "" && subnavC.className === "subnav_second") {
+                                console.log("here");
                                 that.thirdLvlEvent(subnavC, ev);
+                            }
+                        });
+                    }
+                });
+            }
+        }, {
+            key: "captureSubmenuEvents",
+            value: function captureSubmenuEvents(navParent, ev) {
+                var that = this;
+                var navC = this.arrFromObj(navParent.children);
+                var target = ev.target;
+
+                navC.forEach(function (child) {
+
+                    //child becomes parent
+                    if (child.children.length > 1) {
+
+                        var childToParent = that.arrFromObj(child.children);
+
+                        childToParent.forEach(function (child) {
+
+                            if (target === child) {
+                                that.toggleClassName(child.parentNode, "active");
+                                console.log("call again");
                             }
                         });
                     }
@@ -163,18 +186,26 @@ define(["underscore", "app.c", "text!menuTmpl"], function (_, MenuController, te
                     target = ev.target;
 
                 children.forEach(function (tc) {
+
                     if (tc.children.length > 1) {
+
                         var columnsParent = that.arrFromObj(tc.children);
 
                         columnsParent.forEach(function (columns) {
-                            if (target === columns) that.setStateClass(columns.parentNode, "active");
+                            if (target === columns) that.toggleClassName(columns.parentNode, "active");
                         });
                     }
                 });
             }
+
+            /*
+             * Set's stateClass as className to element or leave's it empty
+             * @param {el} - DOM element
+             * @parma {stateClas} - string, class name
+             */
         }, {
-            key: "setStateClass",
-            value: function setStateClass(el, stateClass) {
+            key: "toggleClassName",
+            value: function toggleClassName(el, stateClass) {
                 //set active || ""
                 var elClass = el.className;
                 elClass === "" ? elClass = stateClass : elClass = "";
