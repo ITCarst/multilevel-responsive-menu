@@ -71,8 +71,8 @@ define([
             if (typeof el === "string") return "Please provide element and not class";
             if (el.children.length <= 0 ) return "No children found for the element";
             
-            let firstLvlP = el.children; //first level parent
-            let firstLvlC = firstLvlP[0].children; //first level children
+            let firstLvlP = el.children, //first level parent
+                firstLvlC = firstLvlP[0].children; //first level children
            
             //set events on the submenus if childrens are present
             this.menuTree(firstLvlC);
@@ -89,6 +89,7 @@ define([
             //loop through the array and add click event
             firstLvlC.forEach( firstLvl => {
                 firstLvl.addEventListener("click", function (ev) {
+                    ev.preventDefault();
                     //if has child build the event click for the submenus also
                     if (firstLvl.children.length > 1) that.setNavState(firstLvl, ev);
                 }, false);
@@ -101,9 +102,7 @@ define([
          * @param {ev} - click event
          */
         captureSubmenuEvents (navParent, ev) {
-            let that = this,
-                navC = this.arrFromObj(navParent.children);
-
+            let that = this, navC = this.arrFromObj(navParent.children);
             //the children of nav
             navC.forEach( child => {
                 //child becomes parent and calls active states
@@ -122,7 +121,7 @@ define([
 
             navChildren.forEach( child => {
                 //set active class or remove it
-                if (target === child) that.toggleClassName(child.parentNode, "active");
+                if (target === child && child.tagName === "A") that.toggleClassName(child.parentNode, "active");
                 //if has class recall the parent function with the new object
                 if (child.className !== "") that.captureSubmenuEvents(child, ev);
             });

@@ -10,9 +10,33 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
      * default conf if user doens't send any
     */
     var defaults = {
-        dataURI: "data/menu.data.json",
-        menuClass: ".menu_holder"
-    };
+        dataURI: "dist/js/data/menu.data.json",
+        menuClass: ".menu_holder",
+        respondTo: {
+            width: 700,
+            height: "auto",
+            collapsed: false
+        },
+        beforeRespond: {
+            mode: "overlap",
+            direction: "ttb" },
+        //ttb, rtl, btt
+        afterRespond: {
+            place: "top", //bottom
+            //text
+            backText: "Back",
+            menuTitle: "Main Menu",
+            //icons
+            menuIcon: "url/icon.png",
+            backIcon: "icon-class",
+            //animations
+            mode: "push", //overlap,
+            direction: "ltr", //ttb, rtl, btt
+            subnavShow: "toggle" },
+        //push-over, fade-in, fade-out
+        speed: "fast" };
+
+    //meidum, slow, number
 
     var MenuController = (function () {
 
@@ -52,8 +76,8 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
 
                 //check for the menu class where the menu is going to be rendered
                 if ('config' in this.conf) {
-                    if ('menuClass' in this.conf.config) {
-                        menuClass = this.conf.config.menuClass || defaults.menuClass;
+                    if ('menuClass' in this.conf) {
+                        menuClass = this.conf.menuClass || defaults.menuClass;
                     }
                 }
 
@@ -87,7 +111,7 @@ define(["app.m", "app.v"], function (MenuModel, MenuView) {
             value: function renderView() {
                 var that = typeof this !== "undefined" ? this : {};
                 //render the view
-                return that.view.render(that.data, that.conf.config.menuClass);
+                return that.view.render(that.data, that.conf.menuClass);
             }
         }]);
 

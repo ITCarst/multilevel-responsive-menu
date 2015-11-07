@@ -12,25 +12,13 @@ require.config({
 
 require(["app"], function (App) {
 
-    //conf with multiple options to do   
-    var menuConf = {
-        data: "data/menu.data.json",
-        config: {
-            menuclass: "menu_holder",
-            position: "top-left", //top-right, bottom-left, bottom-right
-            slidefrom: "left-to-right", //right-to-left, top-to-bottom, bottom-to-top, dropdown
-            subnav: "toggle", //slide-fade-in, slide-fade-out
-            pushContent: "push-left" }
-    };
-
-    //default
-    //push-right, fixed
-    var conf = {
+    var confUserDefault = {
         dataURI: "dist/js/data/menu.data.json",
-        config: {
-            menuClass: ".menu_holder"
+        menuClass: ".menu_holder",
+        respondTo: {
+            width: "500px"
         }
     };
 
-    var app = new App(conf);
+    var app = new App(confUserDefault);
 });

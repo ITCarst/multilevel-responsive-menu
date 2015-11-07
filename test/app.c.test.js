@@ -6,9 +6,7 @@ define(["app.c"], function (MenuController) {
             //default
             this.conf = {
                 dataURI: "./base/public/js/data/menu.data.json",
-                config: {
-                    menuClass: ".menu_holder"
-                }
+                menuClass: ".menu_holder"
             }
             this.controller = new MenuController(this.conf);
         });
@@ -46,8 +44,8 @@ define(["app.c"], function (MenuController) {
         describe("config", function () {
             it("should have a conf object", function () {
                 expect(this.controller.conf).toEqual(jasmine.any(Object));
-                expect(this.controller.conf.config).toEqual(this.conf.config);
-                expect(this.controller.conf.config.menuClass).toEqual(this.conf.config.menuClass);
+                expect(this.controller.conf).toEqual(this.conf);
+                expect(this.controller.conf.menuClass).toEqual(this.conf.menuClass);
             });
         });
 

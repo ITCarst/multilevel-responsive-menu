@@ -181,6 +181,16 @@ h3 {
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out; }
 
+/*
+* Displaying the menu children based on animation classes
+*
+*/
+/*
+* Displays top to bottom 
+*/
+.top_to_bot {
+  visibility: hidden; }
+
 body, html {
   margin: 0;
   padding: 0;

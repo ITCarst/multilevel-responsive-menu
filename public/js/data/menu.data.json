@@ -7,9 +7,11 @@
         {
             "title" : "Shop",
             "link"  : "#",
+            "icon"  : "icon-class",
             "subnav" : [
                 {
                     "title": "Ladies",
+                    "icon": "icon-class",
                     "link" : "#",
                     "subnav" : [
                         {
@@ -19,9 +21,11 @@
                         {                        
                             "title": "Clothing",
                             "link" : "#",
+                            "icon" : "icon-class", 
                             "subnav" : [
                                 {
                                     "title" : "Clothing Categories",
+                                    "icon"  : "icon-class",
                                     "sub_column" : [
                                         {
                                             "title" : "Blazers",
@@ -63,6 +67,7 @@
                                 }, 
                                 {
                                     "title" : "Women's Brands", 
+                                    "icon"  : "icon-class",
                                     "sub_column": [
                                         {
                                             "title" : "7 For All Mankind",
@@ -130,6 +135,7 @@
                                 }, 
                                 {
                                     "title" : "Campaigns",
+                                    "icon"  : "icon-class",
                                     "sub_column" : [
                                         {
                                             "title" : "Relaxed chic style",
